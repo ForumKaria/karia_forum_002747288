@@ -16,25 +16,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="888" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="740" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,180 +38,151 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="ChefPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChefEmailID" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ChefLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ChefUserName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ChefFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fieldFirstname" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                          <Component id="fieldLastname" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="fieldUsername" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="fieldPhNo" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="fieldEmail" min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="268" max="32767" attributes="0"/>
+                          <Component id="ChefsDetails" min="-2" pref="260" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                          <Component id="ChefsRecipeDetails" pref="452" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="RecipeTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="RecipeDescription" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CategoryOfFood" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="NoOfIngredients" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="DifficultyLevel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="IsGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="NoOfServings" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="fieldRecipeTitle" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                              <Component id="fieldIngredients" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                              <Component id="fieldDescription" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                              <Component id="fieldCategory" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                              <Component id="fieldServings" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="ChefsRecipeDetails" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="fieldDifficulty" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                              <Component id="fieldGlutenFree" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="setImageBrowseButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ChefPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ChefEmailID" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="ChefLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ChefUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ChefFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabelImage" min="-2" pref="229" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="fieldFirstname" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Component id="fieldLastname" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="fieldUsername" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="fieldPhNo" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="fieldEmail" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="288" pref="288" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="ChefsDetails" min="-2" pref="144" max="-2" attributes="0"/>
-                      <Component id="CreateRecipeButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="fieldServings" min="-2" pref="117" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="441" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="RecipeTitle" min="-2" max="-2" attributes="0"/>
+                              <Component id="IsGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="DifficultyLevel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="NoOfIngredients" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="CategoryOfFood" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="RecipeDescription" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="NoOfServings" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="setImageBrowseButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="CreateRecipeButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="fieldRecipeTitle" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="fieldIngredients" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="fieldDifficulty" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="fieldCategory" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="fieldDescription" min="-2" pref="117" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="checkboxGlutenFree" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabelImage" min="-2" pref="229" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="ChefsDetails" min="-2" pref="42" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ChefsDetails" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="ChefsRecipeDetails" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ChefFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fieldFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RecipeTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldRecipeTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ChefLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fieldLastname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NoOfServings" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldServings" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ChefUserName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fieldUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="IsGlutenFree" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkboxGlutenFree" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ChefPhoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldPhNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="DifficultyLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldDifficulty" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ChefEmailID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NoOfIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="104" max="32767" attributes="0"/>
-                          <Component id="ChefsRecipeDetails" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
-                          <Component id="setImageBrowseButton" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                          <Component id="CreateRecipeButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="fieldCategory" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="fieldDescription" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabelImage" min="-2" pref="253" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ChefPhoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldPhNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ChefEmailID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="RecipeTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="fieldRecipeTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="NoOfServings" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="fieldServings" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="IsGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="fieldGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="DifficultyLevel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="NoOfIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="fieldIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="CategoryOfFood" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="fieldCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="RecipeDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="fieldDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="fieldDifficulty" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabelImage" min="-2" pref="253" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="CategoryOfFood" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="RecipeDescription" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="setImageBrowseButton" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="CreateRecipeButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -227,7 +191,7 @@
         <Component class="javax.swing.JLabel" name="ChefsDetails">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Grande" size="18" style="0"/>
+              <Font name="Zapfino" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CHEF&apos;s DETAILS"/>
           </Properties>
@@ -249,7 +213,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="RecipeTitle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Title"/>
+            <Property name="text" type="java.lang.String" value="Recipe Title"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="NoOfServings">
@@ -319,11 +283,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="fieldRecipeTitle">
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldGlutenFree">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldGlutenFreeKeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="fieldServings">
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldServingsKeyTyped"/>
@@ -357,7 +316,7 @@
         <Component class="javax.swing.JLabel" name="ChefsRecipeDetails">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Grande" size="18" style="0"/>
+              <Font name="Zapfino" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CHEF&apos;s RECIPE DETAILS"/>
           </Properties>
@@ -371,6 +330,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelImage">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkboxGlutenFree">
         </Component>
       </SubComponents>
     </Container>

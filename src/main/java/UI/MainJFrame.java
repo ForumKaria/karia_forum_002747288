@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Person;
+
 /**
  *
  * @author forumkaria
@@ -14,9 +16,11 @@ public
     /**
      * Creates new form MainJFrame
      */
+    private Person person;
     public
             MainJFrame() {
         initComponents();
+        person = new Person();
     }
 
     /**
@@ -37,15 +41,17 @@ public
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        ViewJPanel.setBackground(new java.awt.Color(153, 153, 153));
+
         javax.swing.GroupLayout ViewJPanelLayout = new javax.swing.GroupLayout(ViewJPanel);
         ViewJPanel.setLayout(ViewJPanelLayout);
         ViewJPanelLayout.setHorizontalGroup(
             ViewJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
         ViewJPanelLayout.setVerticalGroup(
             ViewJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addGap(0, 451, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(ViewJPanel);
@@ -58,6 +64,11 @@ public
         });
 
         ViewButton.setText("View");
+        ViewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewButtonActionPerformed(evt);
+            }
+        });
 
         UpdateButton.setText("Update");
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +98,7 @@ public
                 .addComponent(ViewButton)
                 .addGap(52, 52, 52)
                 .addComponent(UpdateButton)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(CreateJPanel);
@@ -99,11 +110,25 @@ public
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         // TODO add your handling code here:
+        
+        CreateJPanel createPanel = new CreateJPanel(person);
+        jSplitPane1.setRightComponent(createPanel);
+        
+        
     }//GEN-LAST:event_CreateButtonActionPerformed
 
+    
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
+        // TODO add your handling code here:
+          
+        ViewJPanel viewPanel = new ViewJPanel(person);
+        jSplitPane1.setRightComponent(viewPanel);
+        
+    }//GEN-LAST:event_ViewButtonActionPerformed
 
     /**
      * @param args the command line arguments
