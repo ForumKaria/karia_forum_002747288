@@ -143,6 +143,11 @@ public
         });
         pmakhni.add(fieldPhNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 238, 100, -1));
 
+        fieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldEmailActionPerformed(evt);
+            }
+        });
         fieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldEmailKeyTyped(evt);
@@ -273,11 +278,14 @@ public
                 || fieldDescription.getText().isEmpty()
                 || (fieldServings.getText().isEmpty() || Integer.parseInt(fieldServings.getText()) <=0)
                 || fieldIngredients.getText().isEmpty() || Integer.parseInt(fieldIngredients.getText()) <=0 ) {
-            JOptionPane.showMessageDialog(null, "Some fields are blank. You must fill them before saving!");
+            JOptionPane.showMessageDialog(null, "Some fields are blank or incomplete. You must fill them before saving!");
         } else {
             if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", fieldEmail.getText()))){
             JOptionPane.showMessageDialog(null, "Invalid Email format");
-        } else{
+        } 
+            
+            else{
+            
         
         //Binding User input to the person object
         person.setFirstname(fieldFirstname.getText());
@@ -286,6 +294,7 @@ public
         
         Contact contact = this.person.getContact(); 
         contact.setPhoneNumber(Long.valueOf(fieldPhNo.getText()));
+        contact.setEmailID(fieldEmail.getText());
         
         Recipe recipe = this.person.getRecipe();
         recipe.setRecipeTitle(fieldRecipeTitle.getText());
@@ -323,6 +332,10 @@ public
             makhniImage.setIcon(new ImageIcon(image));
         }       
     }//GEN-LAST:event_setImageBrowseButtonActionPerformed
+
+    private void fieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -112,6 +112,8 @@ public
         checkboxGlutenfree = new javax.swing.JCheckBox();
         diff = new javax.swing.JProgressBar();
 
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+
         ChefFirstName.setText("First Name");
 
         ChefLastName.setText("Last Name");

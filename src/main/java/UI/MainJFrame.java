@@ -41,7 +41,9 @@ public
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ViewJPanel.setBackground(new java.awt.Color(153, 153, 153));
+        jSplitPane1.setBackground(new java.awt.Color(153, 153, 255));
+
+        ViewJPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout ViewJPanelLayout = new javax.swing.GroupLayout(ViewJPanel);
         ViewJPanel.setLayout(ViewJPanelLayout);
@@ -55,6 +57,8 @@ public
         );
 
         jSplitPane1.setRightComponent(ViewJPanel);
+
+        CreateJPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         CreateButton.setText("Create");
         CreateButton.addActionListener(new java.awt.event.ActionListener() {
