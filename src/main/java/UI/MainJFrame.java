@@ -120,6 +120,8 @@ public
     
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         // TODO add your handling code here:
+        UpdateJPanel updatePanel = new UpdateJPanel(person);
+        jSplitPane1.setRightComponent(updatePanel);
     }//GEN-LAST:event_UpdateButtonActionPerformed
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed

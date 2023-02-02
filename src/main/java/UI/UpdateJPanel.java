@@ -16,23 +16,65 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 /**
  *
  * @author forumkaria
  */
 public
-        class CreateJPanel extends javax.swing.JPanel {
+        class UpdateJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CreateJPanel
      */
-    private Person person;
+    private
+            Person person;
+
     public
-            CreateJPanel(Person person) {
+            UpdateJPanel(Person person) {
         initComponents();
         
         this.person = person;
+        display(person);
+    }
+
+    private
+            void display(Person person) {
+        
+        String firstname = person.getFirstname();
+        fieldFirstname.setText(firstname);
+        
+        String lastname = person.getLastname();
+        fieldLastname.setText(lastname);
+        
+        String username = person.getUsername();
+        fieldUsername.setText(username);
+        
+        Long phone = person.getContact().getPhoneNumber();
+        fieldPhNo.setText(String.valueOf(phone));
+        
+        String email = person.getContact().getEmailID();
+        fieldEmail.setText(email);
+        
+        String recipeTitle = person.getRecipe().getRecipeTitle();
+        fieldRecipeTitle.setText(recipeTitle);
+        
+        String description = person.getRecipe().getDescription();
+        fieldDescription.setText(description);
+        
+        String category = person.getRecipe().getCategory();
+        fieldCategory.setText(category);
+        
+        Integer noOfServings = person.getRecipe().getNoOfServings();
+        fieldServings.setText(String.valueOf(noOfServings));
+        
+        Integer noOfIngredients = person.getRecipe().getNoOfIngredients();
+        fieldIngredients.setText(String.valueOf(noOfIngredients));
+        
+        Float difficulty = person.getRecipe().getDiffLevel();
+        difficultyLevel.setValue(Math.round((difficulty)));
+        
+        Boolean glutenFree = person.getRecipe().getIsGlutenFree();
+        checkboxGlutenFree.setSelected(glutenFree);        
     }
 
     /**
@@ -68,7 +110,7 @@ public
         fieldIngredients = new javax.swing.JTextField();
         fieldCategory = new javax.swing.JTextField();
         fieldDescription = new javax.swing.JTextField();
-        CreateRecipeButton = new javax.swing.JButton();
+        UpdateRecipeButton = new javax.swing.JButton();
         ChefsRecipeDetails = new javax.swing.JLabel();
         setImageBrowseButton = new javax.swing.JButton();
         makhniImage = new javax.swing.JLabel();
@@ -179,14 +221,14 @@ public
         pmakhni.add(fieldCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 326, 117, -1));
         pmakhni.add(fieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 364, 117, -1));
 
-        CreateRecipeButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        CreateRecipeButton.setText("Create");
-        CreateRecipeButton.addActionListener(new java.awt.event.ActionListener() {
+        UpdateRecipeButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        UpdateRecipeButton.setText("Update");
+        UpdateRecipeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateRecipeButtonActionPerformed(evt);
+                UpdateRecipeButtonActionPerformed(evt);
             }
         });
-        pmakhni.add(CreateRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 587, -1, -1));
+        pmakhni.add(UpdateRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 587, -1, -1));
 
         ChefsRecipeDetails.setFont(new java.awt.Font("Zapfino", 1, 18)); // NOI18N
         ChefsRecipeDetails.setText("CHEF's RECIPE DETAILS");
@@ -263,23 +305,23 @@ public
 
     }//GEN-LAST:event_fieldIngredientsKeyTyped
 
-    private void CreateRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateRecipeButtonActionPerformed
+    private void UpdateRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecipeButtonActionPerformed
         // TODO add your handling code here:
         
-        if (fieldFirstname.getText().isEmpty() || fieldLastname.getText().isEmpty() || fieldUsername.getText().isEmpty() || 
-                fieldPhNo.getText().isEmpty() || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty() || 
-                fieldCategory.getText().isEmpty() 
+        if (fieldFirstname.getText().isEmpty() || fieldLastname.getText().isEmpty() || fieldUsername.getText().isEmpty()
+                || fieldPhNo.getText().isEmpty() || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty()
+                || fieldCategory.getText().isEmpty()
                 || fieldDescription.getText().isEmpty()
                 || fieldServings.getText().isEmpty() || fieldIngredients.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Some fields are blank. You must fill them before saving!");
-        } 
-        
+        }
+
         //Binding User input to the person object
         person.setFirstname(fieldFirstname.getText());
         person.setLastname(fieldLastname.getText());
         person.setUsername(fieldUsername.getText());
         
-        Contact contact = this.person.getContact(); 
+        Contact contact = this.person.getContact();        
         contact.setPhoneNumber(Long.valueOf(fieldPhNo.getText()));
         
         Recipe recipe = this.person.getRecipe();
@@ -291,10 +333,9 @@ public
         recipe.setCategory(fieldCategory.getText());
         recipe.setDescription(fieldDescription.getText());
         
-        
-        JOptionPane.showMessageDialog(null, "Successfully Created Chef and Recipe Information!");
+        JOptionPane.showMessageDialog(null, "Successfully Updated Chef and Recipe Information!");
 
-    }//GEN-LAST:event_CreateRecipeButtonActionPerformed
+    }//GEN-LAST:event_UpdateRecipeButtonActionPerformed
 
     private void setImageBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageBrowseButtonActionPerformed
         // TODO add your handling code here:
@@ -304,7 +345,7 @@ public
         FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
         browseImageFile.addChoosableFileFilter(fnef);
         int showOpenDialogue = browseImageFile.showOpenDialog(null);
-         
+        
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
             File selectedImageFile = browseImageFile.getSelectedFile();
             String selectedImagePath = selectedImageFile.getAbsolutePath();
@@ -314,9 +355,9 @@ public
             this.person.getRecipe().setImagePath(selectedImagePath);
             //Resize image to fit jlabel
             Image image = ii.getImage().getScaledInstance(makhniImage.getWidth(), makhniImage.getHeight(), Image.SCALE_SMOOTH);
-             
+            
             makhniImage.setIcon(new ImageIcon(image));
-        }       
+        }        
     }//GEN-LAST:event_setImageBrowseButtonActionPerformed
 
 
@@ -329,13 +370,13 @@ public
     private javax.swing.JLabel ChefUserName;
     private javax.swing.JLabel ChefsDetails;
     private javax.swing.JLabel ChefsRecipeDetails;
-    private javax.swing.JButton CreateRecipeButton;
     private javax.swing.JLabel DifficultyLevel;
     private javax.swing.JLabel IsGlutenFree;
     private javax.swing.JLabel NoOfIngredients;
     private javax.swing.JLabel NoOfServings;
     private javax.swing.JLabel RecipeDescription;
     private javax.swing.JLabel RecipeTitle;
+    private javax.swing.JButton UpdateRecipeButton;
     private javax.swing.JCheckBox checkboxGlutenFree;
     private javax.swing.JSlider difficultyLevel;
     private javax.swing.JTextField fieldCategory;

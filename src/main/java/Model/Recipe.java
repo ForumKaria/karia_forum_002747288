@@ -15,6 +15,17 @@ public class Recipe {
     private Boolean isGlutenFree ;
     private float diffLevel;
     private int noOfIngredients;
+    private String imagePath;
+
+    public
+    String getImagePath() {
+        return imagePath;
+    }
+
+    public
+    void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
     private String category;
     private String description;
     
