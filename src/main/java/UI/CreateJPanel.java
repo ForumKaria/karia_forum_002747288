@@ -267,12 +267,17 @@ public
         // TODO add your handling code here:
         
         if (fieldFirstname.getText().isEmpty() || fieldLastname.getText().isEmpty() || fieldUsername.getText().isEmpty() || 
-                fieldPhNo.getText().isEmpty() || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty() || 
+            (fieldPhNo.getText().isEmpty() || fieldPhNo.getText().length()<9)
+                || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty() || 
                 fieldCategory.getText().isEmpty() 
                 || fieldDescription.getText().isEmpty()
-                || fieldServings.getText().isEmpty() || fieldIngredients.getText().isEmpty()) {
+                || (fieldServings.getText().isEmpty() || Integer.parseInt(fieldServings.getText()) <=0)
+                || fieldIngredients.getText().isEmpty() || Integer.parseInt(fieldIngredients.getText()) <=0 ) {
             JOptionPane.showMessageDialog(null, "Some fields are blank. You must fill them before saving!");
-        } 
+        } else {
+            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", fieldEmail.getText()))){
+            JOptionPane.showMessageDialog(null, "Invalid Email format");
+        } else{
         
         //Binding User input to the person object
         person.setFirstname(fieldFirstname.getText());
@@ -293,7 +298,7 @@ public
         
         
         JOptionPane.showMessageDialog(null, "Successfully Created Chef and Recipe Information!");
-
+        }}
     }//GEN-LAST:event_CreateRecipeButtonActionPerformed
 
     private void setImageBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageBrowseButtonActionPerformed
