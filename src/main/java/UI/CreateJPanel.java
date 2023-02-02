@@ -7,10 +7,14 @@ package UI;
 import Model.Contact;
 import Model.Recipe;
 import Model.Person;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -40,7 +44,7 @@ public
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pmakhni = new javax.swing.JPanel();
         ChefsDetails = new javax.swing.JLabel();
         ChefFirstName = new javax.swing.JLabel();
         ChefLastName = new javax.swing.JLabel();
@@ -64,12 +68,12 @@ public
         fieldIngredients = new javax.swing.JTextField();
         fieldCategory = new javax.swing.JTextField();
         fieldDescription = new javax.swing.JTextField();
-        fieldDifficulty = new javax.swing.JTextField();
         CreateRecipeButton = new javax.swing.JButton();
         ChefsRecipeDetails = new javax.swing.JLabel();
         setImageBrowseButton = new javax.swing.JButton();
-        jLabelImage = new javax.swing.JLabel();
+        makhniImage = new javax.swing.JLabel();
         checkboxGlutenFree = new javax.swing.JCheckBox();
+        difficultyLevel = new javax.swing.JSlider();
 
         ChefsDetails.setFont(new java.awt.Font("Zapfino", 1, 18)); // NOI18N
         ChefsDetails.setText("CHEF's DETAILS");
@@ -149,12 +153,6 @@ public
             }
         });
 
-        fieldDifficulty.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldDifficultyKeyTyped(evt);
-            }
-        });
-
         CreateRecipeButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         CreateRecipeButton.setText("Create");
         CreateRecipeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -173,42 +171,50 @@ public
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        makhniImage.setBackground(new java.awt.Color(153, 204, 255));
+
+        javax.swing.GroupLayout pmakhniLayout = new javax.swing.GroupLayout(pmakhni);
+        pmakhni.setLayout(pmakhniLayout);
+        pmakhniLayout.setHorizontalGroup(
+            pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmakhniLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ChefPhoneNumber)
-                    .addComponent(ChefEmailID)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ChefsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175)
-                        .addComponent(ChefsRecipeDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ChefLastName)
                             .addComponent(ChefUserName)
                             .addComponent(ChefFirstName))
                         .addGap(53, 53, 53)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fieldLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldPhNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(103, 103, 103))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fieldServings, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pmakhniLayout.createSequentialGroup()
+                                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(768, Short.MAX_VALUE))
+                            .addGroup(pmakhniLayout.createSequentialGroup()
+                                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fieldUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fieldPhNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(194, 194, 194))))
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ChefPhoneNumber)
+                            .addComponent(ChefEmailID))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addComponent(ChefsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(175, 175, 175)
+                        .addComponent(ChefsRecipeDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+                        .addGap(103, 103, 103))))
+            .addGroup(pmakhniLayout.createSequentialGroup()
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pmakhniLayout.createSequentialGroup()
                         .addGap(441, 441, 441)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(RecipeTitle)
                             .addComponent(IsGlutenFree)
                             .addComponent(DifficultyLevel)
@@ -217,82 +223,87 @@ public
                             .addComponent(RecipeDescription)
                             .addComponent(NoOfServings)
                             .addComponent(setImageBrowseButton)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmakhniLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(CreateRecipeButton)
                         .addGap(98, 98, 98)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldRecipeTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(fieldIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldServings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pmakhniLayout.createSequentialGroup()
                                 .addComponent(checkboxGlutenFree)
                                 .addGap(123, 123, 123)))
-                        .addGap(66, 66, 66))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmakhniLayout.createSequentialGroup()
+                        .addComponent(makhniImage, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pmakhniLayout.setVerticalGroup(
+            pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmakhniLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChefsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ChefsRecipeDetails))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChefFirstName)
                     .addComponent(fieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RecipeTitle)
                     .addComponent(fieldRecipeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChefLastName)
                     .addComponent(fieldLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NoOfServings)
                     .addComponent(fieldServings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChefUserName)
                     .addComponent(fieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IsGlutenFree)
                     .addComponent(checkboxGlutenFree, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ChefPhoneNumber)
-                    .addComponent(fieldPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DifficultyLevel)
-                    .addComponent(fieldDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ChefPhoneNumber)
+                            .addComponent(fieldPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DifficultyLevel)))
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChefEmailID)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NoOfIngredients)
                     .addComponent(fieldIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pmakhniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pmakhniLayout.createSequentialGroup()
                         .addComponent(CategoryOfFood)
                         .addGap(27, 27, 27)
                         .addComponent(RecipeDescription)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(setImageBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105)
-                        .addComponent(CreateRecipeButton)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(CreateRecipeButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pmakhniLayout.createSequentialGroup()
+                        .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(makhniImage, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -300,15 +311,16 @@ public
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pmakhni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addComponent(pmakhni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -352,15 +364,13 @@ public
 
     }//GEN-LAST:event_fieldIngredientsKeyTyped
 
-    private void fieldDifficultyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldDifficultyKeyTyped
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_fieldDifficultyKeyTyped
-
     private void CreateRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateRecipeButtonActionPerformed
         // TODO add your handling code here:
         
-        if (fieldFirstname.getText().isEmpty() || fieldLastname.getText().isEmpty() || fieldUsername.getText().isEmpty() || fieldPhNo.getText().isEmpty() || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty() || fieldCategory.getText().isEmpty() || fieldDescription.getText().isEmpty() || fieldDifficulty.getText().isEmpty() 
+        if (fieldFirstname.getText().isEmpty() || fieldLastname.getText().isEmpty() || fieldUsername.getText().isEmpty() || 
+                fieldPhNo.getText().isEmpty() || fieldEmail.getText().isEmpty() || fieldRecipeTitle.getText().isEmpty() || 
+                fieldCategory.getText().isEmpty() 
+                || fieldDescription.getText().isEmpty()
                 || fieldServings.getText().isEmpty() || fieldIngredients.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Some fields are blank. You must fill them before saving!");
         } 
@@ -377,7 +387,7 @@ public
         recipe.setRecipeTitle(fieldRecipeTitle.getText());
         recipe.setNoOfServings(Integer.valueOf(fieldServings.getText()));
         recipe.setIsGlutenFree(Boolean.valueOf(checkboxGlutenFree.isSelected()));
-        recipe.setDiffLevel(Float.valueOf(fieldDifficulty.getText()));
+        recipe.setDiffLevel(Float.valueOf(difficultyLevel.getValue()));
         recipe.setNoOfIngredients(Integer.valueOf(fieldIngredients.getText()));
         recipe.setCategory(fieldCategory.getText());
         recipe.setDescription(fieldDescription.getText());
@@ -390,7 +400,23 @@ public
     private void setImageBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageBrowseButtonActionPerformed
         // TODO add your handling code here:
 
-
+        JFileChooser browseImageFile = new JFileChooser();
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+         
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            JOptionPane.showMessageDialog(null, selectedImagePath);
+            //Display image on jlable
+            ImageIcon ii = new ImageIcon(selectedImagePath);
+            //Resize image to fit jlabel
+            Image image = ii.getImage().getScaledInstance(makhniImage.getWidth(), makhniImage.getHeight(), Image.SCALE_SMOOTH);
+             
+            makhniImage.setIcon(new ImageIcon(image));
+        }       
     }//GEN-LAST:event_setImageBrowseButtonActionPerformed
 
 
@@ -411,9 +437,9 @@ public
     private javax.swing.JLabel RecipeDescription;
     private javax.swing.JLabel RecipeTitle;
     private javax.swing.JCheckBox checkboxGlutenFree;
+    private javax.swing.JSlider difficultyLevel;
     private javax.swing.JTextField fieldCategory;
     private javax.swing.JTextField fieldDescription;
-    private javax.swing.JTextField fieldDifficulty;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldFirstname;
     private javax.swing.JTextField fieldIngredients;
@@ -422,8 +448,8 @@ public
     private javax.swing.JTextField fieldRecipeTitle;
     private javax.swing.JTextField fieldServings;
     private javax.swing.JTextField fieldUsername;
-    private javax.swing.JLabel jLabelImage;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel makhniImage;
+    private javax.swing.JPanel pmakhni;
     private javax.swing.JButton setImageBrowseButton;
     // End of variables declaration//GEN-END:variables
 }

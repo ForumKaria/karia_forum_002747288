@@ -142,8 +142,8 @@
                                                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="fieldServings" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                                          <Component id="fieldGlutenFree" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                                                           <Component id="fieldRecipeTitle" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                                          <Component id="checkboxGlutenfree" min="-2" pref="106" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -164,16 +164,20 @@
                                                           <Component id="fieldIngredients" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                                                           <Component id="fieldDescription" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                                                           <Component id="fieldCategory" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                                          <Component id="fieldDifficulty" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                                                       </Group>
+                                                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jLabelImage1" min="-2" pref="229" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace pref="37" max="32767" attributes="0"/>
-                                                      <Component id="jLabelImage1" min="-2" pref="229" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="difficultyLevel" min="-2" pref="143" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace pref="29" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -216,16 +220,21 @@
                                   <Component id="NoOfServings" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="fieldServings" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="IsGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldGlutenFree" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="IsGlutenFree" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="checkboxGlutenfree" min="-2" pref="23" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="ChefPhoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="fieldPhNo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -237,27 +246,31 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Component id="DifficultyLevel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="NoOfIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="fieldIngredients" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="CategoryOfFood" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="RecipeDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
-                                  <Component id="fieldDifficulty" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="difficultyLevel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CategoryOfFood" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="RecipeDescription" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldDescription" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -340,55 +353,75 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldLastname">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldLastnameActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldLastnameKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldUsername">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldPhNo">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldPhNoActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldPhNoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldEmail">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldEmailKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldFirstname">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldFirstnameActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldFirstnameKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldRecipeTitle">
-            </Component>
-            <Component class="javax.swing.JTextField" name="fieldGlutenFree">
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldGlutenFreeKeyTyped"/>
-              </Events>
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldServings">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldServingsKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldIngredients">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldIngredientsKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldCategory">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fieldDescription">
-            </Component>
-            <Component class="javax.swing.JTextField" name="fieldDifficulty">
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldDifficultyKeyTyped"/>
-              </Events>
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="setImageBrowseButton">
               <Properties>
@@ -417,6 +450,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelImage1">
+            </Component>
+            <Component class="javax.swing.JSlider" name="difficultyLevel">
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkboxGlutenfree">
             </Component>
           </SubComponents>
         </Container>

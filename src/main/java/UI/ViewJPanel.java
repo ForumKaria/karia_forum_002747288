@@ -100,17 +100,17 @@ public
         fieldEmail = new javax.swing.JTextField();
         fieldFirstname = new javax.swing.JTextField();
         fieldRecipeTitle = new javax.swing.JTextField();
-        fieldGlutenFree = new javax.swing.JTextField();
         fieldServings = new javax.swing.JTextField();
         fieldIngredients = new javax.swing.JTextField();
         fieldCategory = new javax.swing.JTextField();
         fieldDescription = new javax.swing.JTextField();
-        fieldDifficulty = new javax.swing.JTextField();
         setImageBrowseButton = new javax.swing.JButton();
         jLabelImage = new javax.swing.JLabel();
         ChefsDetails = new javax.swing.JLabel();
         ChefsRecipeDetails1 = new javax.swing.JLabel();
         jLabelImage1 = new javax.swing.JLabel();
+        difficultyLevel = new javax.swing.JSlider();
+        checkboxGlutenfree = new javax.swing.JCheckBox();
 
         ChefFirstName.setText("First Name");
 
@@ -136,6 +136,7 @@ public
 
         ChefEmailID.setText("Email ID");
 
+        fieldLastname.setEditable(false);
         fieldLastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldLastnameActionPerformed(evt);
@@ -147,6 +148,9 @@ public
             }
         });
 
+        fieldUsername.setEditable(false);
+
+        fieldPhNo.setEditable(false);
         fieldPhNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldPhNoActionPerformed(evt);
@@ -158,12 +162,14 @@ public
             }
         });
 
+        fieldEmail.setEditable(false);
         fieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldEmailKeyTyped(evt);
             }
         });
 
+        fieldFirstname.setEditable(false);
         fieldFirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldFirstnameActionPerformed(evt);
@@ -175,29 +181,25 @@ public
             }
         });
 
-        fieldGlutenFree.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldGlutenFreeKeyTyped(evt);
-            }
-        });
+        fieldRecipeTitle.setEditable(false);
 
+        fieldServings.setEditable(false);
         fieldServings.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldServingsKeyTyped(evt);
             }
         });
 
+        fieldIngredients.setEditable(false);
         fieldIngredients.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldIngredientsKeyTyped(evt);
             }
         });
 
-        fieldDifficulty.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldDifficultyKeyTyped(evt);
-            }
-        });
+        fieldCategory.setEditable(false);
+
+        fieldDescription.setEditable(false);
 
         setImageBrowseButton.setText("Set Image");
         setImageBrowseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -269,8 +271,8 @@ public
                                                 .addGap(73, 73, 73)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(fieldServings, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(fieldGlutenFree, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(fieldRecipeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(fieldRecipeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(checkboxGlutenfree, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,13 +287,16 @@ public
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(fieldIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(fieldDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                                                    .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap(118, Short.MAX_VALUE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(29, 29, 29)))
-                                        .addContainerGap(29, Short.MAX_VALUE))))))))
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(103, 103, 103))))))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,13 +325,16 @@ public
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NoOfServings)
                             .addComponent(fieldServings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IsGlutenFree)
-                            .addComponent(fieldGlutenFree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(IsGlutenFree))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(checkboxGlutenfree, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ChefPhoneNumber)
                             .addComponent(fieldPhNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -338,20 +346,23 @@ public
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
                                 .addComponent(DifficultyLevel)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(NoOfIngredients)
-                                    .addComponent(fieldIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(fieldIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CategoryOfFood)
-                                    .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(RecipeDescription)
-                                    .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(fieldDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(difficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CategoryOfFood)
+                            .addComponent(fieldCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RecipeDescription)
+                            .addComponent(fieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
@@ -438,10 +449,6 @@ public
         
     }//GEN-LAST:event_fieldFirstnameKeyTyped
 
-    private void fieldGlutenFreeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldGlutenFreeKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldGlutenFreeKeyTyped
-
     private void fieldServingsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldServingsKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldServingsKeyTyped
@@ -452,13 +459,10 @@ public
         
     }//GEN-LAST:event_fieldIngredientsKeyTyped
 
-    private void fieldDifficultyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldDifficultyKeyTyped
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_fieldDifficultyKeyTyped
-
     private void setImageBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageBrowseButtonActionPerformed
         // TODO add your handling code here:
+        
+        
 
     }//GEN-LAST:event_setImageBrowseButtonActionPerformed
 
@@ -478,12 +482,12 @@ public
     private javax.swing.JLabel NoOfServings;
     private javax.swing.JLabel RecipeDescription;
     private javax.swing.JLabel RecipeTitle;
+    private javax.swing.JCheckBox checkboxGlutenfree;
+    private javax.swing.JSlider difficultyLevel;
     private javax.swing.JTextField fieldCategory;
     private javax.swing.JTextField fieldDescription;
-    private javax.swing.JTextField fieldDifficulty;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldFirstname;
-    private javax.swing.JTextField fieldGlutenFree;
     private javax.swing.JTextField fieldIngredients;
     private javax.swing.JTextField fieldLastname;
     private javax.swing.JTextField fieldPhNo;
