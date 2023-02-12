@@ -13,6 +13,10 @@ public
         private String vaccineName;
         private boolean courseCompleted;
         
+        public Vaccine(String vaccineName, boolean courseCompleted){
+            this.vaccineName = vaccineName;
+            this.courseCompleted = courseCompleted;
+}
         
     public
     String getVaccineName() {

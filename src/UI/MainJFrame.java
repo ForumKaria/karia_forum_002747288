@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Business;
+
 /**
  *
  * @author forumkaria
@@ -14,10 +16,16 @@ public
     /**
      * Creates new form MainJFrame
      */
+    
+    Business business;
+    
     public
             MainJFrame() {
         initComponents();
+        
+        this.business = new Business();
     }
+            
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,14 +123,17 @@ public
 
     private void CreateInsPlanJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateInsPlanJBtnActionPerformed
         // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new CreateInsuranceJPanel(this.business));
     }//GEN-LAST:event_CreateInsPlanJBtnActionPerformed
 
     private void ViewInsPlanJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewInsPlanJBtnActionPerformed
         // TODO add your handling code here:
+         jSplitPane1.setRightComponent(new ViewInsPlanJPanel(this.business));
     }//GEN-LAST:event_ViewInsPlanJBtnActionPerformed
 
     private void createApplicantJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createApplicantJButtonActionPerformed
         // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new CreateApplicantJPanel(this.business));
     }//GEN-LAST:event_createApplicantJButtonActionPerformed
 
     private void viewApplicantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantBtnActionPerformed

@@ -9,18 +9,28 @@ package Model;
  * @author forumkaria
  */
 public
-        class InsurancePlans {
+        class InsurancePlan {
         private int planID;
         private String planName;
         private float costPerMonth;
         private float costPerAnnum;
         
-
+//public InsurancePlan (){
+//       
+//    }
+    public InsurancePlan (int pId, String pName, float costPM, float costPA){
+        planID = pId;
+        planName = pName;
+        costPerMonth = costPM;
+        costPerAnnum = costPA;        
+    }
+    
+   
     public
     int getPlanID() {
         return planID;
     }
-
+ 
     public
     void setPlanID(int planID) {
         this.planID = planID;

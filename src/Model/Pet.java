@@ -12,82 +12,113 @@ import java.util.ArrayList;
  */
 public
         class Pet {
-        private String petName;
-        private int petAge;
-        private int petGender;
-        private int petType;
-        private int petBreed;
-        ArrayList<Vaccine> vaccination_history;
-        InsurancePlans isInsurancePlanOpted;
+
+    private
+            String petName;
+    private
+            int petAge;
+    private
+            boolean isMale;
+    private
+            boolean isFemale;
+    private
+            String petType;
+    private
+            String petBreed;
+    ArrayList<Vaccine> vaccination_history;
+    InsurancePlan insurancePlanOpted;
 
     public
-    String getPetName() {
+            Pet(String petName, int petAge, boolean isMale, boolean isFemale,String petType, 
+                    String petBreed, InsurancePlan insurancePlanOpted) {
+        this.petName = petName;
+        this.petAge = petAge;
+        this.isMale = isMale;
+        this.isFemale = isFemale;
+        this.petType = petType;
+        this.petBreed = petBreed;
+        this.insurancePlanOpted = insurancePlanOpted;
+        this.vaccination_history = new ArrayList<Vaccine>();
+    }
+
+    public
+            boolean isIsMale() {
+        return isMale;
+    }
+
+    public
+            void setIsMale(boolean isMale) {
+        this.isMale = isMale;
+    }
+
+    public
+            boolean isIsFemale() {
+        return isFemale;
+    }
+
+    public
+            void setIsFemale(boolean isFemale) {
+        this.isFemale = isFemale;
+    }
+
+    public
+            String getPetName() {
         return petName;
     }
 
     public
-    void setPetName(String petName) {
+            void setPetName(String petName) {
         this.petName = petName;
     }
 
     public
-    int getPetAge() {
+            int getPetAge() {
         return petAge;
     }
 
     public
-    void setPetAge(int petAge) {
+            void setPetAge(int petAge) {
         this.petAge = petAge;
     }
 
     public
-    int getPetGender() {
-        return petGender;
-    }
-
-    public
-    void setPetGender(int petGender) {
-        this.petGender = petGender;
-    }
-
-    public
-    int getPetType() {
+            String getPetType() {
         return petType;
     }
 
     public
-    void setPetType(int petType) {
+            void setPetType(String petType) {
         this.petType = petType;
     }
 
     public
-    int getPetBreed() {
+            String getPetBreed() {
         return petBreed;
     }
 
     public
-    void setPetBreed(int petBreed) {
+            void setPetBreed(String petBreed) {
         this.petBreed = petBreed;
     }
-    
-    public ArrayList<Vaccine> getVaccines() {
+
+    public
+            ArrayList<Vaccine> getVaccines() {
         return vaccination_history;
     }
 
     public
-    void addToVaccinationHistory(Vaccine vaccine) {
+            void addToVaccinationHistory(Vaccine vaccine) {
         this.vaccination_history.add(vaccine);
     }
 
     public
-    InsurancePlans getIsInsurancePlanOpted() {
-        return isInsurancePlanOpted;
+            InsurancePlan getIsInsurancePlanOpted() {
+        return insurancePlanOpted;
     }
 
     public
-    void setIsInsurancePlanOpted(InsurancePlans isInsurancePlanOpted) {
-        this.isInsurancePlanOpted = isInsurancePlanOpted;
+            void setIsInsurancePlanOpted(InsurancePlan isInsurancePlanOpted) {
+        this.insurancePlanOpted = isInsurancePlanOpted;
     }
 
-        
 }

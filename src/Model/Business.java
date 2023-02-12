@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public
         class Business {
         ArrayList<Applicant> applicantsDirectory;
-        InsurancePlans insurancePlans;
+        ArrayList<InsurancePlan> insuranceDirectory;
         
         public Business(){
             this.applicantsDirectory = new ArrayList<Applicant>();
-            this.insurancePlans = new InsurancePlans();
+            this.insuranceDirectory = new ArrayList<InsurancePlan>();
                
         }
 
@@ -27,8 +27,25 @@ public
     }
 
     public
-    InsurancePlans getInsurancePlans() {
-        return insurancePlans;
+    ArrayList<InsurancePlan> getInsurancePlans() {
+        return insuranceDirectory;
+    }
+    
+    public void addToInsuranceDirectory(InsurancePlan ip){
+        this.insuranceDirectory.add(ip);
+    }
+    
+    public void addToApplicantsDirectory(Applicant a){
+        this.applicantsDirectory.add(a);
+    }
+    
+    public InsurancePlan findIpById(int id){
+        for(InsurancePlan ip : this.insuranceDirectory){
+            if(id == ip.getPlanID()){
+                return ip;
+            }
+        }
+        return this.insuranceDirectory.get(0);
     }
         
 }

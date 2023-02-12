@@ -4,21 +4,62 @@
  */
 package UI;
 
+import Model.Business;
+import Model.InsurancePlan;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author forumkaria
  */
+
 public
         class ViewInsPlanJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewInsPlanJPanel
      */
+    Business business;
+    InsurancePlan selectedInsurancePlan;
+    DefaultTableModel viewTableModel;
+    
     public
-            ViewInsPlanJPanel() {
+            ViewInsPlanJPanel(Business b) {
         initComponents();
+        
+        this.business = b;
+        this.viewTableModel = (DefaultTableModel) InsurPlanJTable.getModel();
+        
+        displayObservation();
+        
     }
 
+     public void displayObservation(){
+         ArrayList<InsurancePlan> insuranceDirectory = this.business.getInsurancePlans();
+
+        if (insuranceDirectory.size() > 0) {
+            // display
+
+            viewTableModel.setRowCount(0);
+            
+            for (InsurancePlan ip : insuranceDirectory) {
+                // number of columns in the table = 3 and row should be framed
+                Object row[] = new Object[5];
+                row[0] = ip.getPlanID();
+                row[1] = ip.getPlanName();
+                row[2] = ip.getCostPerMonth();
+                row[3] = ip.getCostPerAnnum();
+                // add the row to the table
+                viewTableModel.addRow(row);
+            }
+        } else {
+            System.out.print("Empty list");
+        }
+    }
+
+           
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,14 +90,31 @@ public
 
         planIDJLabel.setText("Plan ID:");
 
+        InsPlanIDTxtField.setEditable(false);
+        InsPlanIDTxtField.setEnabled(false);
+
         planNameJLabel.setText("Plan Name:");
+
+        InsPlanNameTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsPlanNameTxtFieldActionPerformed(evt);
+            }
+        });
 
         planMonthCostJLabel.setText("Plan Monthly Cost:");
 
         planAnnualCostJLabel.setText("Plan Annual Cost:");
 
+        InsPlanAnnualCostTxtField.setEditable(false);
+        InsPlanAnnualCostTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsPlanAnnualCostTxtFieldFocusLost(evt);
+            }
+        });
+
         InsurPlanJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -73,8 +131,18 @@ public
         jScrollPane1.setViewportView(InsurPlanJTable);
 
         ViewInsDetailsBtn.setText("VIEW DETAILS");
+        ViewInsDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewInsDetailsBtnActionPerformed(evt);
+            }
+        });
 
         updateInsDetailsBtn.setText("UPDATE DETAILS");
+        updateInsDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateInsDetailsBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,6 +218,44 @@ public
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ViewInsDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewInsDetailsBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = InsurPlanJTable.getSelectedRow();
+        
+        if(selectedRow >= 0){
+            
+            InsPlanIDTxtField.setText(String.valueOf(viewTableModel.getValueAt(selectedRow,0)));
+            InsPlanNameTxtField.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,1)));
+            InsPlanMonCostTxtField.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,2)));
+            InsPlanAnnualCostTxtField.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,3)));
+            
+        } else{
+            // NO SELECTION MADE BY USER
+            JOptionPane.showMessageDialog(null, "Please select row");
+        }
+        
+    }//GEN-LAST:event_ViewInsDetailsBtnActionPerformed
+
+    private void updateInsDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInsDetailsBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = InsurPlanJTable.getSelectedRow();
+        
+        this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
+        
+        
+
+    }//GEN-LAST:event_updateInsDetailsBtnActionPerformed
+
+    private void InsPlanNameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsPlanNameTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsPlanNameTxtFieldActionPerformed
+
+    private void InsPlanAnnualCostTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsPlanAnnualCostTxtFieldFocusLost
+        // TODO add your handling code here:
+        
+         InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
+    }//GEN-LAST:event_InsPlanAnnualCostTxtFieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

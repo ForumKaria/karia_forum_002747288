@@ -19,6 +19,18 @@ public
         Date applicationDate;
         Pet pet;
 
+        public Applicant(int applicantID,
+        String ownerFirstName,
+        String ownerLastName,
+        Date applicationDate,
+        Pet pet){
+        this.applicantID = applicantID;
+        this.ownerFirstName = ownerFirstName;
+        this.ownerLastName = ownerLastName;
+        this.applicationDate = applicationDate;
+        this.pet = pet;
+        }
+
     public
     int getApplicantID() {
         return applicantID;

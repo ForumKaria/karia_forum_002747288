@@ -5,7 +5,8 @@
 package UI;
 
 import Model.Business;
-import Model.InsurancePlans;
+import Model.InsurancePlan;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,25 +17,20 @@ public
 
     private
             Boolean validate = false;
+    
     /**
      * Creates new form CreateInsuranceJPanel
      */
-    public
-            CreateInsuranceJPanel() {
-        initComponents();
-    }
-           
-    CreateInsuranceJPanel(Business business){
-        initComponents();
-          
-          this.business = business;
-    }
+    Business business;
     
-    CreateInsuranceJPanel(InsurancePlans insurancePlans){
+    public
+            CreateInsuranceJPanel(Business b) {
         initComponents();
-          
-          this.insurancePlans = insurancePlans;
+        
+        this.business = b;
+        
     }
+          
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,14 +150,20 @@ public
         int id = Integer.parseInt(InsPlanIDTxtField.getText());
         String planName = InsPlanNameTxtField.getText();
         
-        float costPerMonth = InsPlanMonCostTxtField.getText();
-        float costPerAnnum = InsPlanAnnualCostTxtField.getText();
+        float costPerMonth = Float.parseFloat(InsPlanMonCostTxtField.getText());
+        float costPerAnnum = costPerMonth*12;
+        InsurancePlan ip = new InsurancePlan(id, planName, costPerMonth, costPerAnnum);
+        this.business.addToInsuranceDirectory(ip);
+        
+        JOptionPane.showMessageDialog(null, "Created Insurance Plan");
+
+       
         
     }//GEN-LAST:event_createPlanJBtnActionPerformed
 
     private void InsPlanMonCostTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsPlanMonCostTxtFieldFocusLost
         // TODO add your handling code here:
-      
+        InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
     }//GEN-LAST:event_InsPlanMonCostTxtFieldFocusLost
 
 
