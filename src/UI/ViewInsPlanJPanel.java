@@ -24,6 +24,7 @@ public
     Business business;
     InsurancePlan selectedInsurancePlan;
     DefaultTableModel viewTableModel;
+     
     
     public
             ViewInsPlanJPanel(Business b) {
@@ -32,11 +33,11 @@ public
         this.business = b;
         this.viewTableModel = (DefaultTableModel) InsurPlanJTable.getModel();
         
-        displayObservation();
+        display();
         
     }
 
-     public void displayObservation(){
+     public void display(){
          ArrayList<InsurancePlan> insuranceDirectory = this.business.getInsurancePlans();
 
         if (insuranceDirectory.size() > 0) {
@@ -109,6 +110,12 @@ public
         InsPlanAnnualCostTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 InsPlanAnnualCostTxtFieldFocusLost(evt);
+            }
+        });
+
+        InsPlanMonCostTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsPlanMonCostTxtFieldFocusLost(evt);
             }
         });
 
@@ -243,7 +250,11 @@ public
         
         this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
         
+        this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setCostPerMonth(Float.valueOf(InsPlanMonCostTxtField.getText()));
         
+        this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setCostPerAnnum(Float.valueOf(InsPlanAnnualCostTxtField.getText()));
+         
+        display();
 
     }//GEN-LAST:event_updateInsDetailsBtnActionPerformed
 
@@ -254,8 +265,14 @@ public
     private void InsPlanAnnualCostTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsPlanAnnualCostTxtFieldFocusLost
         // TODO add your handling code here:
         
-         InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
+//         InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
     }//GEN-LAST:event_InsPlanAnnualCostTxtFieldFocusLost
+
+    private void InsPlanMonCostTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsPlanMonCostTxtFieldFocusLost
+        // TODO add your handling code here:
+        
+        InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
+    }//GEN-LAST:event_InsPlanMonCostTxtFieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

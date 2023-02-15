@@ -26,6 +26,7 @@ public
         return applicantsDirectory;
     }
 
+    
     public
     ArrayList<InsurancePlan> getInsurancePlans() {
         return insuranceDirectory;
@@ -46,6 +47,15 @@ public
             }
         }
         return this.insuranceDirectory.get(0);
+    }
+    
+    public Applicant findApplicantById(int id){
+        for(Applicant a : this.applicantsDirectory){
+            if(id == a.getApplicantID()){
+                return a;
+            }
+        }
+        return this.applicantsDirectory.get(0);
     }
         
 }

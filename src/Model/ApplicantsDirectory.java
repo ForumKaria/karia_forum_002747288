@@ -23,5 +23,23 @@ public
         return applicants;
     }
     
+//    public void searchByIdOrName(name, id){
+//        ArrayList<Applicant> applicantsFound;
+//        
+//        
+//        
+//        if() 
+//            both fields empty - popup to input either id or name
+//                   if id field is empty, need t search by name
+//                if you have the id, search by id as the id is unique
+//                        
+//                return applicantsFound
+//                        popup to say you havent found anything
+//                
+//                        
+                                
+                        
+    }
     
-}
+    
+

@@ -71,6 +71,12 @@ public
 
         planAnnualCostJLabel.setText("Plan Annual Cost:");
 
+        InsPlanAnnualCostTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsPlanAnnualCostTxtFieldActionPerformed(evt);
+            }
+        });
+
         createPlanJBtn.setText("CREATE PLAN");
         createPlanJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +171,10 @@ public
         // TODO add your handling code here:
         InsPlanAnnualCostTxtField.setText(String.valueOf(Float.parseFloat (InsPlanMonCostTxtField.getText())*12));
     }//GEN-LAST:event_InsPlanMonCostTxtFieldFocusLost
+
+    private void InsPlanAnnualCostTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsPlanAnnualCostTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsPlanAnnualCostTxtFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

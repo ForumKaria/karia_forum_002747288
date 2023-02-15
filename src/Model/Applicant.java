@@ -31,6 +31,7 @@ public
         this.pet = pet;
         }
 
+    
     public
     int getApplicantID() {
         return applicantID;

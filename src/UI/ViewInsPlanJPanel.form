@@ -163,6 +163,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="InsPlanMonCostTxtField">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="InsPlanMonCostTxtFieldFocusLost"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

@@ -18,8 +18,6 @@ public
     private
             int petAge;
     private
-            boolean isMale;
-    private
             boolean isFemale;
     private
             String petType;
@@ -29,26 +27,15 @@ public
     InsurancePlan insurancePlanOpted;
 
     public
-            Pet(String petName, int petAge, boolean isMale, boolean isFemale,String petType, 
+            Pet(String petName, int petAge, boolean isFemale,String petType, 
                     String petBreed, InsurancePlan insurancePlanOpted) {
         this.petName = petName;
         this.petAge = petAge;
-        this.isMale = isMale;
         this.isFemale = isFemale;
         this.petType = petType;
         this.petBreed = petBreed;
         this.insurancePlanOpted = insurancePlanOpted;
         this.vaccination_history = new ArrayList<Vaccine>();
-    }
-
-    public
-            boolean isIsMale() {
-        return isMale;
-    }
-
-    public
-            void setIsMale(boolean isMale) {
-        this.isMale = isMale;
     }
 
     public
@@ -112,13 +99,22 @@ public
     }
 
     public
-            InsurancePlan getIsInsurancePlanOpted() {
+            InsurancePlan getInsurancePlanOpted() {
         return insurancePlanOpted;
     }
 
     public
-            void setIsInsurancePlanOpted(InsurancePlan isInsurancePlanOpted) {
+            void setInsurancePlanOpted(InsurancePlan isInsurancePlanOpted) {
         this.insurancePlanOpted = isInsurancePlanOpted;
+    }
+            
+    public Vaccine findVaccineById(int id){
+        for(Vaccine v : this.vaccination_history){
+            if(id == v.getVaccineId()){
+                return v;
+            }
+        }
+        return this.vaccination_history.get(0);
     }
 
 }

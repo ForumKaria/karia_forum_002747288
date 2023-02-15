@@ -34,6 +34,8 @@ public
         populateDropdowns();
     }
 
+    
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,7 +84,7 @@ public
 
         applicantIDJLabel.setText("Applicant ID: ");
         jPanel1.add(applicantIDJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 62, -1, -1));
-        jPanel1.add(firstNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 115, 109, -1));
+        jPanel1.add(firstNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 115, 150, 30));
 
         ApplicantDetailsJLabel.setText("APPLICANT DETAILS");
         jPanel1.add(ApplicantDetailsJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 23, -1, -1));
@@ -132,9 +134,9 @@ public
             }
         });
         jPanel1.add(insurancePlansComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 144, -1));
-        jPanel1.add(applicantIDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 57, 109, -1));
-        jPanel1.add(lastNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 172, 109, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 232, 109, -1));
+        jPanel1.add(applicantIDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 57, 150, 30));
+        jPanel1.add(lastNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 172, 150, 30));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 232, 150, -1));
         jPanel1.add(petBreedTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 110, 30));
         jPanel1.add(petTypeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 110, -1));
         jPanel1.add(vaccineNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 110, 30));
@@ -170,18 +172,10 @@ public
         Date applicationDate = jDateChooser1.getDate();
         String petName = petNameTxt.getText();
         int petAge = Integer.parseInt( petAgeTxt.getText());
-        
-        if(malecheckBox.isSelected()){
-            boolean isMale = true;
-            boolean isFemale = false;
-        }else{
-            boolean isFemale = true;
-            boolean isMale = false;
-        }
-            
+ 
+        boolean isfemale = isFemale();
         String petType = petTypeTxt.getText();
         String petBreed = petBreedTxt.getText();
-        
         String vaccinationName = vaccineNameTxt.getText();
         boolean courseCompleted = courseCompletedCheckBox.isSelected();
         
@@ -190,16 +184,34 @@ public
         
         InsurancePlan ip = this.business.findIpById(ip_id);
         
-        Pet pet = new Pet(petName, petAge, courseCompleted, courseCompleted, petType, petBreed, ip);
+        Pet pet = new Pet(petName, petAge, isfemale, petType, petBreed, ip);
         Applicant applicant = new Applicant(applicantID, ownerFirstName, ownerLastName, applicationDate, pet);
-        Vaccine vaccine = new Vaccine(vaccinationName, courseCompleted);
+        Vaccine vaccine = new Vaccine(vaccinationName, courseCompleted, (int) Math.random());
         pet.addToVaccinationHistory(vaccine);
-        this.business.addToApplicantsDirectory(applicant);
         
-        JOptionPane.showMessageDialog(null, "Applicant Created!");
+        
+        if(malecheckBox.isSelected() && femaleCheckBox.isSelected()){
+            JOptionPane.showMessageDialog(null, "Select only one Gender");
+            
+        }else{
+           this.business.addToApplicantsDirectory(applicant);
+           JOptionPane.showMessageDialog(null, "Applicant Created!");
+
+        }
+        
         
     }//GEN-LAST:event_CreateJBtnActionPerformed
 
+    public boolean isFemale(){
+       
+        if(malecheckBox.isSelected()){
+    
+       return false;
+        }else{
+            return true;
+            
+        }
+    }
     private void insurancePlansComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insurancePlansComboBoxActionPerformed
         // TODO add your handling code here:
         

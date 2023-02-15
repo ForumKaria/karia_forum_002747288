@@ -43,6 +43,7 @@ public
         ViewInsPlanJBtn = new javax.swing.JButton();
         createApplicantJButton = new javax.swing.JButton();
         viewApplicantBtn = new javax.swing.JButton();
+        addVaccinationJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +51,11 @@ public
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 511, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel1);
@@ -87,6 +88,13 @@ public
             }
         });
 
+        addVaccinationJButton.setText("ADD VACCINATION");
+        addVaccinationJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVaccinationJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -97,13 +105,14 @@ public
                     .addComponent(ViewInsPlanJBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewApplicantBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(createApplicantJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CreateInsPlanJBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(CreateInsPlanJBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addVaccinationJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CreateInsPlanJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(ViewInsPlanJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,7 +120,9 @@ public
                 .addComponent(createApplicantJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(viewApplicantBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(203, 203, 203))
+                .addGap(47, 47, 47)
+                .addComponent(addVaccinationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
@@ -138,7 +149,14 @@ public
 
     private void viewApplicantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantBtnActionPerformed
         // TODO add your handling code here:
+         jSplitPane1.setRightComponent(new ViewApplicantJPanel(this.business));
     }//GEN-LAST:event_viewApplicantBtnActionPerformed
+
+    private void addVaccinationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccinationJButtonActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new AddVaccineJPanel(this.business));
+        
+    }//GEN-LAST:event_addVaccinationJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +202,7 @@ public
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateInsPlanJBtn;
     private javax.swing.JButton ViewInsPlanJBtn;
+    private javax.swing.JButton addVaccinationJButton;
     private javax.swing.JButton createApplicantJButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
