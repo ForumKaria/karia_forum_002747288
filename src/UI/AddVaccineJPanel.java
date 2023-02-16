@@ -8,6 +8,7 @@ import Model.Applicant;
 import Model.Business;
 import Model.Vaccine;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public
         class AddVaccineJPanel extends javax.swing.JPanel {
         Business business;
-        DefaultTableModel petTable;
+        DefaultTableModel petsTable;
         
     /**
      * Creates new form AddVaccineJPanel
@@ -26,6 +27,7 @@ public
             AddVaccineJPanel(Business b) {
         initComponents();
         
+        this.petsTable = (DefaultTableModel) pets.getModel();
         this.business = b;
         displayPets();
         
@@ -37,7 +39,7 @@ public
         if (applicants.size() > 0) {
             // display
 
-            petTable.setRowCount(0);
+            petsTable.setRowCount(0);
             
             for (Applicant a : applicants) {
               
@@ -50,11 +52,9 @@ public
                 row[2] = a.getPet().getPetType();
                 
                 // add the row to the table
-                petTable.addRow(row);
+                petsTable.addRow(row);
             }
-        } else {
-            System.out.print("Empty list");
-        }
+        } 
     }
     
     /**
@@ -163,9 +163,11 @@ public
         
         Vaccine v = new Vaccine(vaccineNameTxt.getText(),courseCompletedCheckBox.isSelected(), (int) Math.random());
         
-        Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(petTable.getValueAt(selectedRow,0))));
+        Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(petsTable.getValueAt(selectedRow,0))));
         
         a.getPet().addToVaccinationHistory(v);
+        
+        JOptionPane.showMessageDialog(null, "Added to Pet's Vaccination History");
         
     }//GEN-LAST:event_addVaccineBtnActionPerformed
 

@@ -57,5 +57,24 @@ public
         }
         return this.applicantsDirectory.get(0);
     }
-        
+       
+    public ArrayList<Applicant> findApplicantByName(String name){
+        ArrayList<Applicant> filteredApplicants = new ArrayList<Applicant>();
+        for(Applicant a : this.applicantsDirectory){
+            if(name.equals(a.getOwnerFirstName())){
+                filteredApplicants.add(a);
+            }
+        }
+        return filteredApplicants;
+    }
+    
+    public
+            Boolean checkIfApplicantIsUnique(int id ) {
+        for (Applicant a : this.applicantsDirectory) {
+            if (a.getApplicantID() == id) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

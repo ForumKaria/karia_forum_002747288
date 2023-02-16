@@ -26,8 +26,8 @@ public
     Business business;
     DefaultTableModel viewTableModel;
     DefaultTableModel vaccinesTable;
-    ApplicantsDirectory selectedApplicant;   
-    
+    ApplicantsDirectory selectedApplicant;
+
     /**
      * Creates new form ViewApplicantJPanel
      */
@@ -37,75 +37,76 @@ public
         this.business = b;
         this.viewTableModel = (DefaultTableModel) viewApplicantJTable.getModel();
         this.vaccinesTable = (DefaultTableModel) vaccineTable.getModel();
-        
+
 //        genderSelection();
         ArrayList<Applicant> applicants = this.business.getApplicantsDirectory();
 
         displayApplicants(applicants);
-        
     }
-    
-    public void displayApplicants(ArrayList<Applicant> applicants ){
+
+    public
+            void displayApplicants(ArrayList<Applicant> applicants) {
 
         if (applicants.size() > 0) {
             // display
 
             viewTableModel.setRowCount(0);
-            
+
             for (Applicant a : applicants) {
-                
+
                 // number of columns in the table = 3 and row should be framed
-                
                 Object row[] = new Object[3];
                 row[0] = a.getApplicantID();
                 row[1] = a.getOwnerFirstName();
                 row[2] = a.getOwnerLastName();
-                
+
                 // add the row to the table
                 viewTableModel.addRow(row);
             }
-        } else {
+        }
+        else {
             System.out.print("Empty list");
         }
     }
-    
-    public void displayVaccines(ArrayList<Vaccine> vaccines){
-         
+
+    public
+            void displayVaccines(ArrayList<Vaccine> vaccines) {
 
         if (vaccines.size() > 0) {
             // display
 
             vaccinesTable.setRowCount(0);
-            
+
             for (Vaccine v : vaccines) {
-                
+
                 // number of columns in the table = 3 and row should be framed
-                
                 Object row[] = new Object[3];
-                row[0] = v.getVaccineName();
-                row[1] = v.isCourseCompleted()?"Completed":"Pending";
-                
-                
+                row[0] = v.getVaccineId();
+                row[1] = v.getVaccineName();
+                row[2] = v.isCourseCompleted() ? "Completed" : "Pending";
+
                 // add the row to the table
                 vaccinesTable.addRow(row);
             }
-        } else {
+        }
+        else {
             System.out.print("Empty list");
         }
     }
-    
-            
-    public boolean genderSelection(){
-       
-        if(malecheckBox.isSelected()){
-    
-       return false;
-        }else{
+
+    public
+            boolean genderSelection() {
+
+        if (malecheckBox.isSelected()) {
+
+            return false;
+        }
+        else {
             return true;
-            
+
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -169,8 +170,8 @@ public
         ApplicantDetailsJLabel.setText("APPLICANT DETAILS");
         jPanel1.add(ApplicantDetailsJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
-        firstNameJLabel.setText("Applicant Name: ");
-        jPanel1.add(firstNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        firstNameJLabel.setText("Applicant First Name: ");
+        jPanel1.add(firstNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         lastNameJLabel.setText("Last Name: ");
         jPanel1.add(lastNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
@@ -311,8 +312,6 @@ public
 
         applicantIDJLabel2.setText("Vaccine Name:");
         jPanel1.add(applicantIDJLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
-
-        vaccineNameTxt.setEditable(false);
         jPanel1.add(vaccineNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 520, 110, -1));
 
         firstNameJLabel2.setText("Course Completed: ");
@@ -345,21 +344,21 @@ public
 
     private void viewApplicantJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantJBtnActionPerformed
         // TODO add your handling code here:
-        
+
         int selectedRow = viewApplicantJTable.getSelectedRow();
-        
-        if(selectedRow >= 0){
-            
-            applicantIDTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow,0)));
-            firstNameTxt.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,1)));
-            lastNameTxt1.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,2)));
-            
+
+        if (selectedRow >= 0) {
+
+            applicantIDTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 0)));
+            firstNameTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 1)));
+            lastNameTxt1.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 2)));
+
 //            petNameTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow,0)));
 //            firstNameTxt.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,1)));
 //            lastNameTxt1.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,2)));
-            Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(viewTableModel.getValueAt(selectedRow,0))));
+            Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(viewTableModel.getValueAt(selectedRow, 0))));
             Pet p = a.getPet();
-            
+
             petNameTxt.setText(p.getPetName());
             petAgeTxt.setText(String.valueOf(p.getPetAge()));
             malecheckBox.setSelected(!p.isIsFemale());
@@ -367,10 +366,11 @@ public
             petTypeTxt.setText(p.getPetType());
             petBreedTxt.setText(p.getPetBreed());
             InsurancePlanIdTxt.setText(p.getInsurancePlanOpted().getPlanName());
-            
+
             displayVaccines(p.getVaccines());
-            
-        } else{
+
+        }
+        else {
             // NO SELECTION MADE BY USER
             JOptionPane.showMessageDialog(null, "Please select row");
         }
@@ -382,38 +382,38 @@ public
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-                
-                
-        if(malecheckBox.isSelected() && femaleCheckBox.isSelected()){
-            JOptionPane.showMessageDialog(null, "Select only one Gender");
-        }else{
-            
-        
-//    this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerFirstName(firstNameTxt.getText());
 
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerLastName(lastNameTxt1.getText());
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetName(petNameTxt.getText());
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetAge(Integer.parseInt(petAgeTxt.getText()));
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetType(petTypeTxt.getText());
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetBreed(petBreedTxt.getText());
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setIsFemale(genderSelection());
-        
-        int selectedRow = vaccineTable.getSelectedRow();
-        
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow,0)))).setVaccineName(vaccineNameTxt.getText());
-        this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow,0)))).setCourseCompleted(coursecheckBx.isSelected());
-        
-        JOptionPane.showMessageDialog(null, "Applicant Updated!");
+        if (malecheckBox.isSelected() && femaleCheckBox.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Select only one Gender");
         }
-        
-        
+        else {
+
+//    this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerFirstName(firstNameTxt.getText());
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerLastName(lastNameTxt1.getText());
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetName(petNameTxt.getText());
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetAge(Integer.parseInt(petAgeTxt.getText()));
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetType(petTypeTxt.getText());
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setPetBreed(petBreedTxt.getText());
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().setIsFemale(genderSelection());
+
+            int selectedRow = vaccineTable.getSelectedRow();
+
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow, 0)))).setVaccineName(vaccineNameTxt.getText());
+            this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).getPet().findVaccineById(Integer.parseInt(String.valueOf(vaccineTable.getValueAt(selectedRow, 0)))).setCourseCompleted(coursecheckBx.isSelected());
+
+            JOptionPane.showMessageDialog(null, "Applicant Updated!");
+
+            displayApplicants(this.business.getApplicantsDirectory());
+        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void searchAppliIDJBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliIDJBtn1ActionPerformed
@@ -422,15 +422,15 @@ public
         ArrayList<Applicant> applicants = new ArrayList<>();
         applicants.add(a);
         displayApplicants(applicants);
-        
+
     }//GEN-LAST:event_searchAppliIDJBtn1ActionPerformed
 
     private void searchAppliNameJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliNameJBtnActionPerformed
         // TODO add your handling code here:
-        
-        
+        ArrayList<Applicant> applicants = this.business.findApplicantByName(applicantNameSearchTxt.getText());
+        displayApplicants(applicants);
     }//GEN-LAST:event_searchAppliNameJBtnActionPerformed
-        
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ApplicantDetailsJLabel;

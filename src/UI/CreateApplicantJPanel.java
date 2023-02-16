@@ -11,6 +11,7 @@ import Model.Pet;
 import Model.Vaccine;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public
         class CreateApplicantJPanel extends javax.swing.JPanel {
-    
+
     Business business;
 
     /**
@@ -28,14 +29,12 @@ public
     public
             CreateApplicantJPanel(Business b) {
         initComponents();
-        
+
         this.business = b;
-        
+
         populateDropdowns();
     }
 
-    
-            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,67 +164,77 @@ public
 
     private void CreateJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateJBtnActionPerformed
         // TODO add your handling code here:
-        
-        int applicantID = Integer.parseInt( applicantIDTxt.getText());
+        Random random = new Random();
+
+        int applicantID = Integer.parseInt(applicantIDTxt.getText());
         String ownerFirstName = firstNameTxt.getText();
         String ownerLastName = lastNameTxt.getText();
         Date applicationDate = jDateChooser1.getDate();
         String petName = petNameTxt.getText();
-        int petAge = Integer.parseInt( petAgeTxt.getText());
- 
+        int petAge = Integer.parseInt(petAgeTxt.getText());
+
         boolean isfemale = isFemale();
         String petType = petTypeTxt.getText();
         String petBreed = petBreedTxt.getText();
         String vaccinationName = vaccineNameTxt.getText();
         boolean courseCompleted = courseCompletedCheckBox.isSelected();
-        
+
         int ip_id = (int) insurancePlansComboBox.getSelectedItem();
-        
-        
+
         InsurancePlan ip = this.business.findIpById(ip_id);
-        
+
         Pet pet = new Pet(petName, petAge, isfemale, petType, petBreed, ip);
         Applicant applicant = new Applicant(applicantID, ownerFirstName, ownerLastName, applicationDate, pet);
-        Vaccine vaccine = new Vaccine(vaccinationName, courseCompleted, (int) Math.random());
+        int randomInt = random.nextInt(100) + 1;
+
+        Vaccine vaccine = new Vaccine(vaccinationName, courseCompleted, randomInt);
         pet.addToVaccinationHistory(vaccine);
-        
-        
-        if(malecheckBox.isSelected() && femaleCheckBox.isSelected()){
-            JOptionPane.showMessageDialog(null, "Select only one Gender");
-            
-        }else{
-           this.business.addToApplicantsDirectory(applicant);
-           JOptionPane.showMessageDialog(null, "Applicant Created!");
+
+        boolean isUnique = this.business.checkIfApplicantIsUnique(applicantID);
+
+        if (isUnique) {
+            if (malecheckBox.isSelected() && femaleCheckBox.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Select only one Gender");
+            }
+            else {
+                this.business.addToApplicantsDirectory(applicant);
+                JOptionPane.showMessageDialog(null, "Applicant Created!");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Applicant ID Exists!");
 
         }
-        
-        
+
+
     }//GEN-LAST:event_CreateJBtnActionPerformed
 
-    public boolean isFemale(){
-       
-        if(malecheckBox.isSelected()){
-    
-       return false;
-        }else{
+    public
+            boolean isFemale() {
+
+        if (malecheckBox.isSelected()) {
+
+            return false;
+        }
+        else {
             return true;
-            
+
         }
     }
     private void insurancePlansComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insurancePlansComboBoxActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_insurancePlansComboBoxActionPerformed
 
-    public void populateDropdowns(){
-        
-        ArrayList<InsurancePlan> insurancePlans = this.business.getInsurancePlans();
-        
-//        insurancePlansComboBox
+    public
+            void populateDropdowns() {
 
-    for( InsurancePlan ip : insurancePlans){
-        insurancePlansComboBox.addItem(ip.getPlanID());
+        ArrayList<InsurancePlan> insurancePlans = this.business.getInsurancePlans();
+
+//        insurancePlansComboBox
+        for (InsurancePlan ip : insurancePlans) {
+            insurancePlansComboBox.addItem(ip.getPlanID());
         }
     }
 
