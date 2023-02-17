@@ -64,9 +64,6 @@ public
                 viewTableModel.addRow(row);
             }
         }
-        else {
-            System.out.print("Empty list");
-        }
     }
 
     public
@@ -159,12 +156,19 @@ public
         firstNameJLabel2 = new javax.swing.JLabel();
         coursecheckBx = new javax.swing.JCheckBox();
 
+        setBackground(new java.awt.Color(255, 204, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         applicantIDJLabel.setText("Applicant ID: ");
         jPanel1.add(applicantIDJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        firstNameTxt.setEditable(false);
+        firstNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameTxtActionPerformed(evt);
+            }
+        });
         jPanel1.add(firstNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 150, 30));
 
         ApplicantDetailsJLabel.setText("APPLICANT DETAILS");
@@ -215,6 +219,7 @@ public
         InsurancePlanIdTxt.setEditable(false);
         jPanel1.add(InsurancePlanIdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 110, -1));
 
+        viewApplicantJTable.setBackground(new java.awt.Color(153, 153, 255));
         viewApplicantJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -246,9 +251,18 @@ public
         });
         jPanel1.add(searchAppliNameJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 70, 30));
 
+        deleteApplicantJBtn.setBackground(new java.awt.Color(153, 153, 255));
+        deleteApplicantJBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         deleteApplicantJBtn.setText("DELETE");
+        deleteApplicantJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteApplicantJBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(deleteApplicantJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
 
+        viewApplicantJBtn.setBackground(new java.awt.Color(153, 153, 255));
+        viewApplicantJBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         viewApplicantJBtn.setText("VIEW");
         viewApplicantJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,10 +274,9 @@ public
         applicantIDTxt.setEditable(false);
         jPanel1.add(applicantIDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 150, 30));
         jPanel1.add(applicantNameSearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 150, 30));
-
-        lastNameTxt1.setEditable(false);
         jPanel1.add(lastNameTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 150, 30));
 
+        vaccineTable.setBackground(new java.awt.Color(153, 153, 255));
         vaccineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -287,6 +300,8 @@ public
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 290, 160));
 
+        jButton2.setBackground(new java.awt.Color(153, 153, 255));
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jButton2.setText("UPDATE ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,7 +344,7 @@ public
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -337,48 +352,38 @@ public
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void viewApplicantJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantJBtnActionPerformed
-        // TODO add your handling code here:
-
-        int selectedRow = viewApplicantJTable.getSelectedRow();
-
-        if (selectedRow >= 0) {
-
-            applicantIDTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 0)));
-            firstNameTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 1)));
-            lastNameTxt1.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 2)));
-
-//            petNameTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow,0)));
-//            firstNameTxt.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,1)));
-//            lastNameTxt1.setText(String.valueOf( viewTableModel.getValueAt(selectedRow,2)));
-            Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(viewTableModel.getValueAt(selectedRow, 0))));
-            Pet p = a.getPet();
-
-            petNameTxt.setText(p.getPetName());
-            petAgeTxt.setText(String.valueOf(p.getPetAge()));
-            malecheckBox.setSelected(!p.isIsFemale());
-            femaleCheckBox.setSelected(p.isIsFemale());
-            petTypeTxt.setText(p.getPetType());
-            petBreedTxt.setText(p.getPetBreed());
-            InsurancePlanIdTxt.setText(p.getInsurancePlanOpted().getPlanName());
-
-            displayVaccines(p.getVaccines());
-
-        }
-        else {
-            // NO SELECTION MADE BY USER
-            JOptionPane.showMessageDialog(null, "Please select row");
-        }
-    }//GEN-LAST:event_viewApplicantJBtnActionPerformed
-
     private void coursecheckBxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursecheckBxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coursecheckBxActionPerformed
+
+    private void searchAppliIDJBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliIDJBtn1ActionPerformed
+        // TODO add your handling code here:
+        if (this.business.checkIfApplicantExists(Integer.parseInt(applicantIDSearchTxt.getText()))) {
+
+            Applicant a = this.business.findApplicantById(Integer.parseInt(applicantIDSearchTxt.getText()));
+            ArrayList<Applicant> applicants = new ArrayList<>();
+            applicants.add(a);
+            displayApplicants(applicants);
+        }else{
+            JOptionPane.showMessageDialog(null, "ID doesn't exist!");
+            displayApplicants(this.business.getApplicantsDirectory());
+        }
+    }//GEN-LAST:event_searchAppliIDJBtn1ActionPerformed
+
+    private void searchAppliNameJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliNameJBtnActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Applicant> applicants = this.business.findApplicantByName(applicantNameSearchTxt.getText());
+        displayApplicants(applicants);
+    }//GEN-LAST:event_searchAppliNameJBtnActionPerformed
+
+    private void firstNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameTxtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -388,7 +393,7 @@ public
         }
         else {
 
-//    this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
+            //    this.business.findIpById((int)viewTableModel.getValueAt(selectedRow,0)).setPlanName(InsPlanNameTxtField.getText());
             this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerFirstName(firstNameTxt.getText());
 
             this.business.findApplicantById(Integer.parseInt(applicantIDTxt.getText())).setOwnerLastName(lastNameTxt1.getText());
@@ -413,23 +418,46 @@ public
             displayApplicants(this.business.getApplicantsDirectory());
         }
 
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void searchAppliIDJBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliIDJBtn1ActionPerformed
+    private void viewApplicantJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewApplicantJBtnActionPerformed
         // TODO add your handling code here:
-        Applicant a = this.business.findApplicantById(Integer.parseInt(applicantIDSearchTxt.getText()));
-        ArrayList<Applicant> applicants = new ArrayList<>();
-        applicants.add(a);
-        displayApplicants(applicants);
 
-    }//GEN-LAST:event_searchAppliIDJBtn1ActionPerformed
+        int selectedRow = viewApplicantJTable.getSelectedRow();
 
-    private void searchAppliNameJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAppliNameJBtnActionPerformed
+        if (selectedRow >= 0) {
+
+            applicantIDTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 0)));
+            firstNameTxt.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 1)));
+            lastNameTxt1.setText(String.valueOf(viewTableModel.getValueAt(selectedRow, 2)));
+
+            Applicant a = this.business.findApplicantById(Integer.parseInt(String.valueOf(viewTableModel.getValueAt(selectedRow, 0))));
+            Pet p = a.getPet();
+
+            petNameTxt.setText(p.getPetName());
+            petAgeTxt.setText(String.valueOf(p.getPetAge()));
+            malecheckBox.setSelected(!p.isIsFemale());
+            femaleCheckBox.setSelected(p.isIsFemale());
+            petTypeTxt.setText(p.getPetType());
+            petBreedTxt.setText(p.getPetBreed());
+            InsurancePlanIdTxt.setText(p.getInsurancePlanOpted().getPlanName());
+
+            displayVaccines(p.getVaccines());
+
+        }
+        else {
+            // NO SELECTION MADE BY USER
+            JOptionPane.showMessageDialog(null, "Please select row");
+        }
+    }//GEN-LAST:event_viewApplicantJBtnActionPerformed
+
+    private void deleteApplicantJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteApplicantJBtnActionPerformed
         // TODO add your handling code here:
-        ArrayList<Applicant> applicants = this.business.findApplicantByName(applicantNameSearchTxt.getText());
-        displayApplicants(applicants);
-    }//GEN-LAST:event_searchAppliNameJBtnActionPerformed
+
+        this.business.deleteApplicantById(Integer.parseInt(String.valueOf(applicantIDTxt.getText())));
+        displayApplicants(this.business.getApplicantsDirectory());
+
+    }//GEN-LAST:event_deleteApplicantJBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

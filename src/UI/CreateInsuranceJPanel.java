@@ -55,6 +55,8 @@ public
 
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+
         planIDJLabel.setText("Plan ID:");
 
         InsurancePlanHeader.setText("INSURANCE PLAN DETAILS");
@@ -77,6 +79,8 @@ public
             }
         });
 
+        createPlanJBtn.setBackground(new java.awt.Color(51, 153, 255));
+        createPlanJBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         createPlanJBtn.setText("CREATE PLAN");
         createPlanJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,8 +122,8 @@ public
                         .addGap(240, 240, 240)
                         .addComponent(InsurancePlanHeader))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(createPlanJBtn)))
+                        .addGap(232, 232, 232)
+                        .addComponent(createPlanJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,9 +147,9 @@ public
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(planAnnualCostJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InsPlanAnnualCostTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(createPlanJBtn)
-                .addGap(83, 83, 83))
+                .addGap(64, 64, 64)
+                .addComponent(createPlanJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);

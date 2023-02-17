@@ -25,7 +25,6 @@ public
     ArrayList<Applicant> getApplicantsDirectory() {
         return applicantsDirectory;
     }
-
     
     public
     ArrayList<InsurancePlan> getInsurancePlans() {
@@ -76,5 +75,23 @@ public
             }
         }
         return true;
+    }
+            
+    public void deleteApplicantById(int id){
+        for(Applicant a : this.applicantsDirectory){
+            if(id == a.getApplicantID()){
+                this.applicantsDirectory.remove(a);
+            }
+        }
+    }
+    
+    public
+            Boolean checkIfApplicantExists(int id ) {
+        for (Applicant a : this.applicantsDirectory) {
+            if (a.getApplicantID() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }

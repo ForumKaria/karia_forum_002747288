@@ -87,6 +87,8 @@ public
 
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+
         InsurancePlanUpdateHeader.setText("VIEW AND UPDATE INSURANCE PLAN DETAILS");
 
         planIDJLabel.setText("Plan ID:");
@@ -119,6 +121,7 @@ public
             }
         });
 
+        InsurPlanJTable.setBackground(new java.awt.Color(130, 150, 246));
         InsurPlanJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -137,6 +140,8 @@ public
         ));
         jScrollPane1.setViewportView(InsurPlanJTable);
 
+        ViewInsDetailsBtn.setBackground(new java.awt.Color(102, 153, 255));
+        ViewInsDetailsBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         ViewInsDetailsBtn.setText("VIEW DETAILS");
         ViewInsDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +149,8 @@ public
             }
         });
 
+        updateInsDetailsBtn.setBackground(new java.awt.Color(102, 153, 255));
+        updateInsDetailsBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         updateInsDetailsBtn.setText("UPDATE DETAILS");
         updateInsDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +184,7 @@ public
                                     .addComponent(InsPlanMonCostTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(InsPlanNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                        .addGap(107, 107, 107)
                         .addComponent(updateInsDetailsBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,8 +196,8 @@ public
                         .addComponent(InsurancePlanUpdateHeader)
                         .addGap(290, 290, 290))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ViewInsDetailsBtn)
-                        .addGap(176, 176, 176))))
+                        .addComponent(ViewInsDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(174, 174, 174))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +205,7 @@ public
                 .addGap(24, 24, 24)
                 .addComponent(InsurancePlanUpdateHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(planIDJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,12 +222,12 @@ public
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(planAnnualCostJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(InsPlanAnnualCostTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateInsDetailsBtn))
+                        .addGap(93, 93, 93)
+                        .addComponent(updateInsDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
-                .addComponent(ViewInsDetailsBtn)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(ViewInsDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);

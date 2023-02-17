@@ -75,12 +75,15 @@ public
         pets = new javax.swing.JTable();
         addVaccineBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
         VaccinationDetailsJLabel.setText("ADD VACCINATION");
 
         jLabel11.setText("Vaccine Name:");
 
         jLabel13.setText("Course Completed: ");
 
+        pets.setBackground(new java.awt.Color(102, 204, 255));
         pets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -102,6 +105,7 @@ public
         });
         jScrollPane1.setViewportView(pets);
 
+        addVaccineBtn.setBackground(new java.awt.Color(102, 153, 255));
         addVaccineBtn.setText("ADD");
         addVaccineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

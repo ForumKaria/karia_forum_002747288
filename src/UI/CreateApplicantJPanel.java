@@ -44,6 +44,7 @@ public
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CreateJBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         applicantIDJLabel = new javax.swing.JLabel();
         firstNameTxt = new javax.swing.JTextField();
@@ -75,10 +76,21 @@ public
         PetGenderJLabel1 = new javax.swing.JLabel();
         MaleTxt = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        CreateJBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CreateJBtn.setBackground(new java.awt.Color(102, 102, 255));
+        CreateJBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        CreateJBtn.setText("CREATE");
+        CreateJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateJBtnActionPerformed(evt);
+            }
+        });
+        add(CreateJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 140, 40));
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         applicantIDJLabel.setText("Applicant ID: ");
@@ -152,14 +164,6 @@ public
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 186, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 763, -1));
-
-        CreateJBtn.setText("CREATE");
-        CreateJBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateJBtnActionPerformed(evt);
-            }
-        });
-        add(CreateJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateJBtnActionPerformed

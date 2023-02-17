@@ -5,6 +5,7 @@
 package UI;
 
 import Model.Business;
+import java.awt.Color;
 
 /**
  *
@@ -24,6 +25,11 @@ public
         initComponents();
         
         this.business = new Business();
+        CreateInsPlanJBtn.setBackground(Color.white);
+        ViewInsPlanJBtn.setBackground(Color.white);
+        createApplicantJButton.setBackground(Color.white);
+        viewApplicantBtn.setBackground(Color.white);
+        addVaccinationJButton.setBackground(Color.white);
     }
             
 
@@ -47,11 +53,13 @@ public
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(121, 163, 248));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 457, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,6 +68,11 @@ public
 
         jSplitPane1.setRightComponent(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setForeground(new java.awt.Color(58, 134, 242));
+
+        CreateInsPlanJBtn.setBackground(new java.awt.Color(102, 153, 255));
+        CreateInsPlanJBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         CreateInsPlanJBtn.setText("CREATE INSURANCE PLAN");
         CreateInsPlanJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +80,8 @@ public
             }
         });
 
+        ViewInsPlanJBtn.setBackground(new java.awt.Color(102, 153, 255));
+        ViewInsPlanJBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         ViewInsPlanJBtn.setText("VIEW/UPDATE INSURANCE PLAN");
         ViewInsPlanJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +89,8 @@ public
             }
         });
 
+        createApplicantJButton.setBackground(new java.awt.Color(102, 153, 255));
+        createApplicantJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         createApplicantJButton.setText("CREATE APPLICANT");
         createApplicantJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +98,8 @@ public
             }
         });
 
+        viewApplicantBtn.setBackground(new java.awt.Color(102, 153, 255));
+        viewApplicantBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         viewApplicantBtn.setText("VIEW/UPDATE APPLICANT");
         viewApplicantBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +107,8 @@ public
             }
         });
 
+        addVaccinationJButton.setBackground(new java.awt.Color(102, 153, 255));
+        addVaccinationJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         addVaccinationJButton.setText("ADD VACCINATION");
         addVaccinationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
