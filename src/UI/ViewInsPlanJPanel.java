@@ -87,7 +87,7 @@ public
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
         InsurancePlanUpdateHeader.setText("VIEW AND UPDATE INSURANCE PLAN DETAILS");
 

@@ -55,7 +55,7 @@ public
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 102));
 
         planIDJLabel.setText("Plan ID:");
 
