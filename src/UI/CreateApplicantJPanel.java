@@ -76,6 +76,7 @@ public
         PetGenderJLabel1 = new javax.swing.JLabel();
         MaleTxt = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        HappyPetsViewUpdate = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,6 +164,11 @@ public
         jLabel16.setText("Female");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 186, -1, -1));
 
+        HappyPetsViewUpdate.setBackground(new java.awt.Color(153, 153, 255));
+        HappyPetsViewUpdate.setFont(new java.awt.Font("Kokonor", 1, 18)); // NOI18N
+        HappyPetsViewUpdate.setText("HAPPY PETS");
+        jPanel1.add(HappyPetsViewUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 763, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,6 +251,7 @@ public
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ApplicantDetailsJLabel;
     private javax.swing.JButton CreateJBtn;
+    private javax.swing.JTextField HappyPetsViewUpdate;
     private javax.swing.JLabel MaleTxt;
     private javax.swing.JLabel PetDetailsJLabel;
     private javax.swing.JLabel PetGenderJLabel1;

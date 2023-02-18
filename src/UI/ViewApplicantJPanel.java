@@ -155,6 +155,7 @@ public
         vaccineNameTxt = new javax.swing.JTextField();
         firstNameJLabel2 = new javax.swing.JLabel();
         coursecheckBx = new javax.swing.JCheckBox();
+        HappyPetsViewUpdate = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 204, 255));
 
@@ -339,6 +340,11 @@ public
         });
         jPanel1.add(coursecheckBx, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, -1, -1));
 
+        HappyPetsViewUpdate.setBackground(new java.awt.Color(153, 153, 255));
+        HappyPetsViewUpdate.setFont(new java.awt.Font("Kokonor", 1, 18)); // NOI18N
+        HappyPetsViewUpdate.setText("HAPPY PETS");
+        jPanel1.add(HappyPetsViewUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -462,6 +468,7 @@ public
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ApplicantDetailsJLabel;
+    private javax.swing.JTextField HappyPetsViewUpdate;
     private javax.swing.JTextField InsurancePlanIdTxt;
     private javax.swing.JLabel MaleTxt;
     private javax.swing.JLabel PetDetailsJLabel;
