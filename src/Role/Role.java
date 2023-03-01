@@ -4,6 +4,8 @@
  */
 package Role;
 
+import AppSystem.AppSystem;
+import Useraccount.UserAccount;
 import javax.swing.JFrame;
 
 /**
@@ -12,15 +14,14 @@ import javax.swing.JFrame;
  */
 
     public abstract class Role {
-    static String[] roles = {"librarian", "customer", "admin" };
+    static String[] roles = {"admin","customer","librarian","branch manager"};
 
     public static String[] getRoles() {
         return roles;
     }
     
     
-    public abstract JFrame getWorkArea(Library library, UserAccount useraccount);
+    public abstract JFrame getWorkArea(AppSystem appSystem, UserAccount userAccount);
     
-
     
 }

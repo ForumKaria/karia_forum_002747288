@@ -4,6 +4,9 @@
  */
 package UI;
 
+import AppSystem.AppSystem;
+import Useraccount.UserAccount;
+
 /**
  *
  * @author forumkaria
@@ -17,6 +20,11 @@ public
     public
             BranchManagerJFrame() {
         initComponents();
+    }
+
+    public
+    BranchManagerJFrame(AppSystem app, UserAccount ua) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -34,11 +42,11 @@ public
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 782, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 507, Short.MAX_VALUE)
         );
 
         pack();

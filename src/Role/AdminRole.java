@@ -7,7 +7,7 @@ package Role;
 import AppSystem.AppSystem;
 import Branch.Branch;
 import UI.AdminJFrame;
-import UserAccount.UserAccount;
+import Useraccount.UserAccount;
 import javax.swing.JFrame;
 
 
@@ -19,8 +19,8 @@ public
         class AdminRole extends Role{
 
     @Override
-    public JFrame createWorkArea(AppSystem appSystem, Branch branch, UserAccount useraccount) {
-        return new AdminJFrame(appSystem, branch, useraccount);
+    public JFrame getWorkArea(AppSystem appSystem, UserAccount useraccount) {
+        return new AdminJFrame(appSystem, useraccount);
     }
     
 }

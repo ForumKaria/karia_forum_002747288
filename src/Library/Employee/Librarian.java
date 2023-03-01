@@ -19,7 +19,7 @@ public
     
     public Librarian(int id, String firstName, String lastName){
         super();
-        this.personType = "Librarian";
+//        this.personType = "Librarian";
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;

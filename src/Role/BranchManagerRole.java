@@ -5,7 +5,7 @@
 package Role;
 
 import AppSystem.AppSystem;
-import UI.CustomerJFrame;
+import UI.BranchManagerJFrame;
 import Useraccount.UserAccount;
 import javax.swing.JFrame;
 
@@ -14,10 +14,11 @@ import javax.swing.JFrame;
  * @author forumkaria
  */
 public
-        class CustomerRole extends Role {
-
+        class BranchManagerRole extends Role{
+    
     @Override
     public JFrame getWorkArea(AppSystem appSystem, UserAccount userAccount) {
-        return new CustomerJFrame(appSystem, userAccount);
+        return new BranchManagerJFrame(appSystem,userAccount);
     }
+    
 }

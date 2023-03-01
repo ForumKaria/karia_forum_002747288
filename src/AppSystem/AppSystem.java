@@ -13,6 +13,7 @@ import java.util.ArrayList;
 /**
  *
  * @author forumkaria
+ * 
  */
 public
         class AppSystem {
@@ -28,6 +29,10 @@ public
         this.useraccountDirectory.createUserAccount("admin", "admin", new AdminRole());
     }
 
+    public static AppSystem getAppSystem(){
+        return new AppSystem();
+    }
+    
     public
     ArrayList<Branch> getBranches() {
         return branches;
@@ -58,5 +63,22 @@ public
         this.customerDirectory = customerDirectory;
     }
     
+    public Branch addBranch(String name){
+        Branch b = new Branch(name);
+        this.branches.add(b);
+        return b;
+    }
     
+    public Branch findBranch(String name){
+        for (Branch b: this.getBranches()){
+            if (b.getName().equals(name)){
+                return b;
+            }
+        }
+        return null;  
+    }
+    
+    public void deleteBranch(Branch b){
+        this.branches.remove(b);
+    }
 }

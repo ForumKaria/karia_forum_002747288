@@ -4,11 +4,20 @@
  */
 package Role;
 
+import AppSystem.AppSystem;
+import UI.LibrarianJFrame;
+import Useraccount.UserAccount;
+import javax.swing.JFrame;
+
 /**
  *
  * @author forumkaria
  */
 public
-        class LibrarianRole {
+        class LibrarianRole extends Role{
     
+    @Override
+    public JFrame getWorkArea(AppSystem appSystem, UserAccount userAccount){
+        return new LibrarianJFrame(appSystem, userAccount);
+    }
 }
