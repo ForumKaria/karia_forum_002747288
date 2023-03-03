@@ -5,11 +5,11 @@
  */
 package UI;
 
-import Book.Book;
-import Business.Business;
-import Business.UserAccount;
-import Business.UserAccountDirectory;
+import AppSystem.AppSystem;
+import Branch.Branch;
 import Customer.Customer;
+import Library.Material.Book;
+import Useraccount.UserAccount;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerManagementJPanel extends javax.swing.JPanel {
 
     private UserAccount useraccount;
-    private Business business;
+    private AppSystem appSystem;
     DefaultTableModel tableModel;
     Book selectedBook;
     
@@ -31,12 +31,12 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-     CustomerManagementJPanel(Business business, UserAccount useraccount) {
+     CustomerManagementJPanel(AppSystem appSystem, Branch branch, UserAccount useraccount) {
         initComponents();
         
-        this.business = business;
+        this.appSystem = appSystem;
         this.useraccount = useraccount;
-        this.tableModel = (DefaultTableModel) jTable1.getModel();
+        this.tableModel = (DefaultTableModel) customerRegJTable.getModel();
         
         populate();
     }
@@ -46,7 +46,7 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
         
         tableModel.setRowCount(0);
         
-        for(Book c: this.business.getBooks().getBooks()) {
+        for(Book c: this.appSystem.getBooks()) {
             
             Object[] row = new Object[4];
             
@@ -70,18 +70,18 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        customerRegJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         custNameTxt = new javax.swing.JTextField();
         custIDTxt = new javax.swing.JTextField();
         usernameTxt = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        addCustomerBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
-        jTable1.setBackground(new java.awt.Color(255, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        customerRegJTable.setBackground(new java.awt.Color(255, 204, 204));
+        customerRegJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -97,11 +97,11 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(customerRegJTable);
 
         jButton1.setText("LOGOUT");
 
-        jButton2.setText("ADD");
+        addCustomerBtn.setText("ADD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,10 +122,10 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
                                     .addComponent(custNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                        .addComponent(addCustomerBtn)))
+                .addGap(87, 87, 87)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(95, 95, 95)
@@ -147,7 +147,7 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
                         .addGap(43, 43, 43)
                         .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton2)))
+                        .addComponent(addCustomerBtn)))
                 .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -159,12 +159,12 @@ public class CustomerManagementJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCustomerBtn;
     private javax.swing.JTextField custIDTxt;
     private javax.swing.JTextField custNameTxt;
+    private javax.swing.JTable customerRegJTable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField passwordTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables

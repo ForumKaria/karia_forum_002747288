@@ -10,55 +10,35 @@ package Personnel;
  */
 public
         class Person {
-    public String id;
-    public  String firstName;
-    public String lastName;
+    public String personid;
+    public  String name;
 
     public
     String getId() {
-        return id;
+        return personid;
     }
 
     public
     void setId(String id) {
-        this.id = id;
+        this.personid = id;
+    }
+
+
+    public
+    String getName() {
+        return name;
+    }
+
+    public
+    void setName(String name) {
+        this.name = name;
     }
 
     
-//    public
-//    String getPersonType() {
-//        return personType;
-//    }
-//
-//    public
-//    void setPersonType(String personType) {
-//        this.personType = personType;
-//    }
-
-    
-    public
-    String getFirstName() {
-        return firstName;
-    }
-
-    public
-    void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public
-    String getLastName() {
-        return lastName;
-    }
-
-    public
-    void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
     
     @Override
     public String toString() {
-        return this.id;
+        return this.personid;
     }
     
 }

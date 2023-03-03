@@ -17,18 +17,24 @@ import java.util.ArrayList;
  */
 public
         class AppSystem {
+
     ArrayList<Branch> branches;
-    private UserAccountDirectory useraccountDirectory;
-    private CustomerDirectory customerDirectory;
+    private UserAccountDirectory topLevelUserAccountDirectory;
 
     
     public AppSystem(){
         this.branches = new ArrayList<Branch>();
-        this.useraccountDirectory = new UserAccountDirectory();
-        this.customerDirectory = new CustomerDirectory();
-        this.useraccountDirectory.createUserAccount("admin", "admin", new AdminRole());
+        this.topLevelUserAccountDirectory = new UserAccountDirectory();
+        
+        // CREATING ADMIN
+        this.topLevelUserAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
     }
-
+    
+    public static
+        AppSystem getInstance() {
+        return new AppSystem();
+    }
+        
     public static AppSystem getAppSystem(){
         return new AppSystem();
     }
@@ -43,27 +49,15 @@ public
         this.branches = branches;
     }
 
-    public
-    UserAccountDirectory getUseraccountDirectory() {
-        return useraccountDirectory;
+    public UserAccountDirectory getTopLevelUserAccountDirectory() {
+        return topLevelUserAccountDirectory;
     }
 
-    public
-    void setUseraccountDirectory(UserAccountDirectory useraccountDirectory) {
-        this.useraccountDirectory = useraccountDirectory;
-    }
-
-    public
-    CustomerDirectory getCustomerDirectory() {
-        return customerDirectory;
-    }
-
-    public
-    void setCustomerDirectory(CustomerDirectory customerDirectory) {
-        this.customerDirectory = customerDirectory;
+    public void setTopLevelUserAccountDirectory(UserAccountDirectory topLevelUserAccountDirectory) {
+        this.topLevelUserAccountDirectory = topLevelUserAccountDirectory;
     }
     
-    public Branch addBranch(String name){
+    public Branch createBranch(String name){
         Branch b = new Branch(name);
         this.branches.add(b);
         return b;

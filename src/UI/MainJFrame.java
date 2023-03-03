@@ -7,8 +7,8 @@ package UI;
 import AppSystem.AppSystem;
 import Branch.Branch;
 import Library.Library;
-import UserAccount.UserAccount;
-import UserAccount.UserAccountDirectory;
+import Role.Role;
+import Useraccount.UserAccount;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,20 +36,19 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         
-        this.appSystem = AppSystem.getAppSystem();
-//        this.customerDirectory = business.getCustomerDirectory();
-//        this.deliveryagentDirectory = business.getDeliveryAgentDirectory();
-        this.useraccountDirectory = appSystem.getuad();
+        this.appSystem = appSystem;
+        this.branch = branch;
+        this.userAccount = userAccount;
         populateDropdown();
 
 
     }
 
     public void populateDropdown() {
+        jComboBox1.removeAllItems();
         
-
-        for (String role : this.appSystem.getUseraccountDirectory().getAllRoles()) {
-            rolesBox.addItem(role);
+        for(String rolename: Role.getAllRoles()) {
+            jComboBox1.addItem(rolename);
         }
     }
 
@@ -126,17 +125,26 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String username = fieldusername1.getText();
-        String password = fieldpassword.getText();
-        String role = (String) rolesBox.getSelectedItem();
-
-        if (this.useraccountDirectory.accountExists(username, password, role)) {
-
-            UserAccount user = this.useraccountDirectory.getUserAccount(username, password, role);
+        Boolean foundUser = false;
+        
+        if(this.appSystem.getTopLevelUserAccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText()) != null) {
+            UserAccount user = this.appSystem.getTopLevelUserAccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText());
+            foundUser = true;
+            user.getRole().getWorkArea(appSystem, branch, userAccount);
             this.setVisible(false);
-            user.getWorkArea(role, appSystem, user);
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            for(Branch branch: this.appSystem.getBranches()) {
+                if(branch.getBranchuseraccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText()) != null) {
+                    UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText());
+                    foundUser = true;
+                    branchUser.getRole().getWorkArea(appSystem, branch, userAccount);
+                    this.setVisible(false);
+                }
+            }
+        }
+        // if user not found
+        if(!foundUser) {
+            JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

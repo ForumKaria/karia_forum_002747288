@@ -19,8 +19,8 @@ public
         class AdminRole extends Role{
 
     @Override
-    public JFrame getWorkArea(AppSystem appSystem, UserAccount useraccount) {
-        return new AdminJFrame(appSystem, useraccount);
+    public JFrame getWorkArea(AppSystem appSystem, Branch branch, UserAccount useraccount) {
+        return new AdminJFrame(appSystem, branch, useraccount);
     }
     
 }

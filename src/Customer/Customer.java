@@ -4,9 +4,12 @@
  */
 package Customer;
 
+import Library.Library;
+import java.util.ArrayList;
 import Personnel.Person;
 import Library.RentalRequest.RentalRequest;
-import java.util.ArrayList;
+import Library.Material.Book;
+import Library.Material.Magazine;
 
 /**
  *
@@ -14,27 +17,35 @@ import java.util.ArrayList;
  */
 public
         class Customer extends Person{
-   RentalRequest rentalRequestMade;
-   private ArrayList<RentalRequest> customerRentalList;
+   private ArrayList<RentalRequest> customerRentalRequests;
    
    
    public Customer() {
         super();
-//        this.personType = "Customer";
-//        this.personType = "Librarian";
-    }
-   
-
-    public
-    RentalRequest getRentalRequestMade() {
-        return rentalRequestMade;
+        this.customerRentalRequests = new ArrayList<RentalRequest>();
     }
 
     public
-    void setRentalRequestMade(RentalRequest rentalRequestMade) {
-        this.rentalRequestMade = rentalRequestMade;
+    ArrayList<RentalRequest> getCustomerRentalRequests() {
+        return customerRentalRequests;
+    }
+
+    public RentalRequest addRequest(int duration, Book book, Magazine magazine, Library library, Customer customer){
+        RentalRequest rentalReq = new RentalRequest(duration, book, magazine, library, customer);
+        this.customerRentalRequests.add(rentalReq);
+        
+        return rentalReq;
+        
     }
    
+    public RentalRequest findRequest(String id){
+        for (RentalRequest rentalReq: this.customerRentalRequests){
+            if (rentalReq.getId().equals(id)){
+                return rentalReq;
+            }
+        }
+        return null;
+    }
    
            
 }

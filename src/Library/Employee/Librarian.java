@@ -12,47 +12,17 @@ import java.util.ArrayList;
  *
  * @author forumkaria
  */
-public
-        class Librarian extends Person{
-
-    ArrayList<RentalRequest> rentalRequests;
+public class Librarian extends Person{
+    public ArrayList<RentalRequest> requestList;
     
-    public Librarian(int id, String firstName, String lastName){
+    public Librarian(){
         super();
-//        this.personType = "Librarian";
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
-        this.rentalRequests = new ArrayList<RentalRequest>();
+        this.requestList = new ArrayList<RentalRequest>();
+    }
+
+    public ArrayList<RentalRequest> getRequestList() {
+        return requestList;
     }
 
 
-    public
-    ArrayList<RentalRequest> getRentalRequest() {
-        return rentalRequests;
-    }
-
-    public
-    void addToRentalRequests(RentalRequest rentalRequest) {
-        this.rentalRequests.add(rentalRequest);
-        
-    }
-    
-    public void acceptRentalRequest( int id){
-        for( RentalRequest rr : this.rentalRequests){
-            if(id == rr.getId()){
-                rr.setIsAccepted(true);
-            }
-        }
-    }
-    
-    public void rejectRentalRequest( int id){
-        for( RentalRequest rr : this.rentalRequests){
-            if(id == rr.getId()){
-                rr.setIsAccepted(false);
-            }
-        }
-    }
-   
-    
 }

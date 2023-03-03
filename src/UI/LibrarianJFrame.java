@@ -5,6 +5,7 @@
 package UI;
 
 import AppSystem.AppSystem;
+import Branch.Branch;
 import Customer.Customer;
 import Useraccount.UserAccount;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,7 @@ public
         class LibrarianJFrame extends javax.swing.JFrame {
 
     private UserAccount useraccount;
+    private Branch branch;
     private AppSystem appSystem;
     DefaultTableModel tableModel;
     
@@ -29,31 +31,34 @@ public
     }
             
     public
-            LibrarianJFrame(AppSystem appSystem, UserAccount useraccount) {
+            LibrarianJFrame(AppSystem appSystem, Branch branch, UserAccount useraccount) {
         initComponents();
         
         this.appSystem = appSystem;
         this.useraccount = useraccount;
-        this.tableModel = (DefaultTableModel) jTable1.getModel();
+        this.branch = branch;
         
-        populate();
+//        this.tableModel = (DefaultTableModel) jTable1.getModel();
+        
+//        populate();
     }
-            
-    public void populate() {
-        
-        tableModel.setRowCount(0);
-        for(Customer c: this.appSystem.getCustomerDirectory().getCustomerlist()) {
-            UserAccount u = this.appSystem.getUseraccountDirectory().findById(c.getId());
-            
-            Object[] row = new Object[4];
-            
-            row[0] = c.getId();
-            row[1] = c.getFirstName();
-            row[2] = u.getUsername();
-            row[3] = u.getPassword();
-            
-            tableModel.addRow(row);
-        }
+
+//            
+//    public void populate() {
+//        
+//        tableModel.setRowCount(0);
+//        for(Customer c: this.branch.getCustomerDirectory().getCustomerlist()) {
+//            UserAccount u = this.branch.getUseraccountDirectory().findById(c.getId());
+//            
+//            Object[] row = new Object[4];
+//            
+//            row[0] = c.getId();
+//            row[1] = c.getName();
+//            row[2] = u.getUsername();
+//            row[3] = u.getPassword();
+//            
+//            tableModel.addRow(row);
+//        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,6 +129,7 @@ public
     /**
      * @param args the command line arguments
      */
+    }
     public static
             void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -162,27 +168,27 @@ public
         });
     }
     public void displayBooks(){
-        BookDirectory books = this.business.getBooks();
-        
-        if(books.getBooks().size() > 0){
-            
-            tableModel.setRowCount(0);
-            for(Book a : books.getBooks()){
-                
-                Object row[] = new Object[5];
-                row[0] = a;
-                row[1] = a.getName();
-                row[2] = a.getAuthorName();
-                row[3] = a.getGenreName();
-                
-                
-                tableModel.addRow(row);
-                
-            }
-        }
-        else{
-            System.out.println("Empty List");
-        }   
+//        BookDirectory books = this.business.getBooks();
+//        
+//        if(books.getBooks().size() > 0){
+//            
+//            tableModel.setRowCount(0);
+//            for(Book a : books.getBooks()){
+//                
+//                Object row[] = new Object[5];
+//                row[0] = a;
+//                row[1] = a.getName();
+//                row[2] = a.getAuthorName();
+//                row[3] = a.getGenreName();
+//                
+//                
+//                tableModel.addRow(row);
+//                
+//            }
+//        }
+//        else{
+//            System.out.println("Empty List");
+//        }   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -35,21 +35,10 @@ public class AdminJFrame extends javax.swing.JFrame {
         
         this.appSystem = appSystem;
         this.useraccount = useraccount;
-        
-        populateDropdown();
-    }
-
-    public
-    AdminJFrame(AppSystem appSystem, UserAccount useraccount) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.branch = branch;
     }
     
-    public void populateDropdown() {
-        jComboBox1.removeAllItems();
-        for (String rolename : Role.getAllRoles()) {
-            jComboBox1.addItem(rolename);
-        }
-    }
+  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,20 +51,20 @@ public class AdminJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        userRegistrationJBtn = new javax.swing.JButton();
+        customerJBtn = new javax.swing.JButton();
         employeeJBtn = new javax.swing.JButton();
         BranchJButton = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        userRegistrationJBtn.setText("USER REGISTRATION");
-        userRegistrationJBtn.addActionListener(new java.awt.event.ActionListener() {
+        customerJBtn.setText("CUSTOMER");
+        customerJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userRegistrationJBtnActionPerformed(evt);
+                customerJBtnActionPerformed(evt);
             }
         });
 
@@ -93,10 +82,10 @@ public class AdminJFrame extends javax.swing.JFrame {
             }
         });
 
-        backBtn.setText("LOGOUT");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        logoutBtn.setText("LOGOUT");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                logoutBtnActionPerformed(evt);
             }
         });
 
@@ -106,13 +95,13 @@ public class AdminJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
                 .addComponent(BranchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(employeeJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
-                .addComponent(userRegistrationJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(customerJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,10 +109,10 @@ public class AdminJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userRegistrationJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BranchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -149,25 +138,26 @@ public class AdminJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
 
         this.setVisible(false);
-        MainJFrame mj = new MainJFrame(this.appSystem, this.useraccount);
-    }//GEN-LAST:event_backBtnActionPerformed
+        MainJFrame mj = new MainJFrame(this.appSystem, this.branch, this.useraccount);
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void userRegistrationJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegistrationJBtnActionPerformed
+    private void customerJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerJBtnActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new LibrarianManagementJPanel(appSystem, useraccount));
-    }//GEN-LAST:event_userRegistrationJBtnActionPerformed
+        jSplitPane1.setRightComponent(new CustomerManagementJPanel(this.appSystem, this.branch, this.useraccount));
+    }//GEN-LAST:event_customerJBtnActionPerformed
 
     private void employeeJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeJBtnActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CustomerManagementJPanel(appSystem, useraccount));
+        jSplitPane1.setRightComponent(new EmployeeManagementJPanel());
     }//GEN-LAST:event_employeeJBtnActionPerformed
 
     private void BranchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BranchJButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BranchJButtonActionPerformed
 
     /**
@@ -210,11 +200,11 @@ public class AdminJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BranchJButton;
-    private javax.swing.JButton backBtn;
+    private javax.swing.JButton customerJBtn;
     private javax.swing.JButton employeeJBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton userRegistrationJBtn;
+    private javax.swing.JButton logoutBtn;
     // End of variables declaration//GEN-END:variables
 }

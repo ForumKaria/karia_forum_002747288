@@ -5,6 +5,7 @@
 package UI;
 
 import AppSystem.AppSystem;
+import Branch.Branch;
 import Useraccount.UserAccount;
 
 /**
@@ -19,16 +20,23 @@ public
      */
     
     private AppSystem appSystem;
-    UserAccount ua;
+    UserAccount userAccount;
+    Branch branch;
+    
     public
             CustomerJFrame() {
         initComponents();
     }
 
-    public
-    CustomerJFrame(AppSystem appSystem, UserAccount userAccount) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public CustomerJFrame(AppSystem appSystem, Branch branch, UserAccount useraccount) {
+       initComponents();
+       this.setVisible(true);
+       
+       this.appSystem = appSystem;
+       this.branch = branch;
+       this.userAccount = useraccount;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,17 +51,17 @@ public
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        materialIDTxt = new javax.swing.JTextField();
+        materialSerialNoTxt = new javax.swing.JTextField();
         materialTitleTxt = new javax.swing.JTextField();
         durationTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        historyTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         priceTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        rentBtn = new javax.swing.JButton();
+        viewBtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -61,7 +69,7 @@ public
         jScrollPane3 = new javax.swing.JScrollPane();
         bookTable = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        magTable = new javax.swing.JTable();
+        magazineTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,7 +80,7 @@ public
 
         jLabel3.setText("PRICE");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        historyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -91,7 +99,7 @@ public
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(historyTable);
 
         jLabel4.setText("MATERIAL SERIAL NO");
 
@@ -99,9 +107,19 @@ public
 
         jLabel6.setText("Rented History");
 
-        jButton1.setText("RENT");
+        rentBtn.setText("RENT");
+        rentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("VIEW");
+        viewBtn.setText("VIEW");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("LOGOUT");
 
@@ -135,7 +153,7 @@ public
         });
         jScrollPane3.setViewportView(bookTable);
 
-        magTable.setModel(new javax.swing.table.DefaultTableModel(
+        magazineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -154,12 +172,12 @@ public
                 return types [columnIndex];
             }
         });
-        magTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        magazineTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                magTableMouseClicked(evt);
+                magazineTableMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(magTable);
+        jScrollPane4.setViewportView(magazineTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -177,26 +195,26 @@ public
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(durationTxt)
                     .addComponent(materialTitleTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(materialIDTxt)
+                    .addComponent(materialSerialNoTxt)
                     .addComponent(priceTxt)
                     .addComponent(materialTypeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel6)
-                        .addGap(152, 152, 152))))
+                        .addGap(152, 152, 152))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(325, 325, 325)
-                        .addComponent(jButton1)
+                        .addComponent(rentBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(viewBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE))
@@ -226,8 +244,8 @@ public
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
+                            .addComponent(rentBtn)
+                            .addComponent(viewBtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,7 +254,7 @@ public
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(materialIDTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(materialSerialNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -268,18 +286,30 @@ public
     private void bookTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookTableMouseClicked
         // TODO add your handling code here:
         int selectedRow = bookTable.getSelectedRow();
-        String sid = (String) bookTable.getValueAt(selectedRow, 0);
+        String id = (String) bookTable.getValueAt(selectedRow, 0);
 
-        fieldbookSerial.setText(sid);
+        materialSerialNoTxt.setText(id);
     }//GEN-LAST:event_bookTableMouseClicked
 
-    private void magTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_magTableMouseClicked
+    private void magazineTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_magazineTableMouseClicked
         // TODO add your handling code here:
-        int selectedRow = magTable.getSelectedRow();
-        String sid = (String) magTable.getValueAt(selectedRow, 0);
+        int selectedRow = magazineTable.getSelectedRow();
+        String sid = (String) magazineTable.getValueAt(selectedRow, 0);
 
-        fieldmagSerial.setText(sid);
-    }//GEN-LAST:event_magTableMouseClicked
+        materialSerialNoTxt.setText(sid);
+    }//GEN-LAST:event_magazineTableMouseClicked
+
+    private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_rentBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_viewBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,8 +355,7 @@ public
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable bookTable;
     private javax.swing.JTextField durationTxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTable historyTable;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -340,11 +369,12 @@ public
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable magTable;
-    private javax.swing.JTextField materialIDTxt;
+    private javax.swing.JTable magazineTable;
+    private javax.swing.JTextField materialSerialNoTxt;
     private javax.swing.JTextField materialTitleTxt;
     private javax.swing.JTextField materialTypeTxt;
     private javax.swing.JTextField priceTxt;
+    private javax.swing.JButton rentBtn;
+    private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
 }

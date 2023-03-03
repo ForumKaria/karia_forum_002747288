@@ -5,6 +5,7 @@
 package Role;
 
 import AppSystem.AppSystem;
+import Branch.Branch;
 import UI.LibrarianJFrame;
 import Useraccount.UserAccount;
 import javax.swing.JFrame;
@@ -17,7 +18,7 @@ public
         class LibrarianRole extends Role{
     
     @Override
-    public JFrame getWorkArea(AppSystem appSystem, UserAccount userAccount){
-        return new LibrarianJFrame(appSystem, userAccount);
+    public JFrame getWorkArea(AppSystem appSystem, Branch branch, UserAccount useraccount){
+        return new LibrarianJFrame(appSystem, branch, useraccount);
     }
 }

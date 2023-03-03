@@ -5,6 +5,7 @@
 package Role;
 
 import AppSystem.AppSystem;
+import Branch.Branch;
 import UI.BranchManagerJFrame;
 import Useraccount.UserAccount;
 import javax.swing.JFrame;
@@ -17,8 +18,8 @@ public
         class BranchManagerRole extends Role{
     
     @Override
-    public JFrame getWorkArea(AppSystem appSystem, UserAccount userAccount) {
-        return new BranchManagerJFrame(appSystem,userAccount);
+    public JFrame getWorkArea(AppSystem appSystem, Branch branch, UserAccount useraccount) {
+        return new BranchManagerJFrame(appSystem, branch, useraccount);
     }
     
 }

@@ -47,13 +47,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="backBtn" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="logoutBtn" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                       <Component id="BranchJButton" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace pref="83" max="32767" attributes="0"/>
                       <Component id="employeeJBtn" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="userRegistrationJBtn" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="customerJBtn" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -63,10 +63,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="21" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="userRegistrationJBtn" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="customerJBtn" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="employeeJBtn" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="BranchJButton" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="backBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="logoutBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -74,12 +74,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="userRegistrationJBtn">
+            <Component class="javax.swing.JButton" name="customerJBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="USER REGISTRATION"/>
+                <Property name="text" type="java.lang.String" value="CUSTOMER"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userRegistrationJBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerJBtnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="employeeJBtn">
@@ -98,12 +98,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BranchJButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="backBtn">
+            <Component class="javax.swing.JButton" name="logoutBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LOGOUT"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

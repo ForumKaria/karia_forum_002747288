@@ -25,7 +25,6 @@ public
     private BooksDirectory bookDirectory;
     private MagazineDirectory magazineDirectory;
     private GenreDirectory genreDirectory;
-    private CustomerDirectory customerDirectory;
     private int buildingNo;
     private Librarian librarian;
     private EmployeeDirectory employeeDirectory;
@@ -34,7 +33,6 @@ public
     public Library(int buildingNo) {
         this.buildingNo = buildingNo;
 //        this.userAccountDirectory = new UserAccountDirectory();
-        this.customerDirectory = new CustomerDirectory();
         this.authorDirectory  = new AuthorDirectory();
         this.bookDirectory = new BooksDirectory();
         this.magazineDirectory = new MagazineDirectory();

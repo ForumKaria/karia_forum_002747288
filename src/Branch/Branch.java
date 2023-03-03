@@ -4,7 +4,9 @@
  */
 package Branch;
 
+import Customer.CustomerDirectory;
 import Library.Library;
+import Useraccount.UserAccountDirectory;
 
 /**
  *
@@ -14,20 +16,23 @@ public
         class Branch {
     private String name;
     private Library library;
+    UserAccountDirectory branchuseraccountDirectory;
+    CustomerDirectory customerDirectory;
+
+    public
+    CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
+    }
+
+    public
+    void setCustomerDirectory(CustomerDirectory customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
+    
     
     public Branch(String name){
-        this.name = name;       
-//        UserAccount user = this.uad.createUserAccount("admin", "admin", "admin");
-    }
-
-    public
-    String getName() {
-        return name;
-    }
-
-    public
-    void setName(String name) {
-        this.name = name;
+        this.name = name; 
+        this.branchuseraccountDirectory = new UserAccountDirectory();
     }
 
     public
@@ -39,10 +44,30 @@ public
     void setLibrary(Library library) {
         this.library = library;
     }
+
+    
+    public
+    String getName() {
+        return name;
+    }
+
+    public
+    void setName(String name) {
+        this.name = name;
+    }
     
     public Library addLibrary(int buildingNo){
         return this.library = new Library(buildingNo);
     }
+    
+    public UserAccountDirectory getBranchuseraccountDirectory() {
+        return branchuseraccountDirectory;
+    }
+
+    public void setBranchuseraccountDirectory(UserAccountDirectory branchuseraccountDirectory) {
+        this.branchuseraccountDirectory = branchuseraccountDirectory;
+    }
+    
     @Override
     public String toString(){
         return this.name;

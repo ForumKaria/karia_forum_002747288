@@ -17,17 +17,25 @@ public
         class RentalRequest {
     
     Book book;
-    Magazine mag;
+    Magazine magazine;
     String id;
     private static int count = 0;
-    int price;
-    boolean isAccepted;
+    private static int price = 10;
+    String status;
     int duration;
     Customer customer;
     Library library;
     
+    
     public RentalRequest(int duration, Book book, Magazine magazine, Library library, Customer customer){
-        
+        this.count++;
+        this.id = "RequestId" + this.count;
+        this.customer = customer;
+        this.magazine = magazine;
+        this.book = book;
+        this.library = library;
+        this.duration = duration;
+        this.status = "Created";
     }
 
     public
@@ -41,23 +49,53 @@ public
     }
 
     public
+    Magazine getMagazine() {
+        return magazine;
+    }
+
+    public
+    void setMagazine(Magazine magazine) {
+        this.magazine = magazine;
+    }
+
+    public
+    String getId() {
+        return id;
+    }
+
+    public
+    void setId(String id) {
+        this.id = id;
+    }
+
+    public static
+    int getCount() {
+        return count;
+    }
+
+    public static
+    void setCount(int count) {
+        RentalRequest.count = count;
+    }
+
+    public static
     int getPrice() {
         return price;
     }
 
-    public
+    public static
     void setPrice(int price) {
-        this.price = price;
+        RentalRequest.price = price;
     }
 
     public
-    boolean isIsAccepted() {
-        return isAccepted;
+    String getStatus() {
+        return status;
     }
 
     public
-    void setIsAccepted(boolean isAccepted) {
-        this.isAccepted = isAccepted;
+    void setStatus(String status) {
+        this.status = status;
     }
 
     public
@@ -68,6 +106,31 @@ public
     public
     void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public
+    Customer getCustomer() {
+        return customer;
+    }
+
+    public
+    void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public
+    Library getLibrary() {
+        return library;
+    }
+
+    public
+    void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    @Override
+    public String toString(){
+        return this.id;
     }
     
     

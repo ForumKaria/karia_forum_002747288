@@ -19,13 +19,13 @@ public class UserAccount {
     private String password;
     private Role role;
 
-
-    public UserAccount() {
-        this.accountId = "ACC" + count++;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
+//
+//    public UserAccount() {
+//        this.accountId = "ACC" + count++;
+//        this.username = username;
+//        this.password = password;
+//        this.role = role;
+//    }
 
     public UserAccount(String username, String password, Role role) {
         this.accountId = "role" + count++;

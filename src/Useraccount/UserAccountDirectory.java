@@ -32,11 +32,11 @@ public
         this.userAccounts = userAccounts;
     }
 
-    public void 
-            createUserAccount(String id, String password, Role role) {
-        UserAccount user = new UserAccount(id, password, role);
-        this.userAccounts.add(user);
-//        return user;
+    public UserAccount createUserAccount(String username, String password, Role role){
+        UserAccount user = new UserAccount(username, password, role);
+        userAccounts.add(user);
+        return user;
+        
     }
 
     public
@@ -59,6 +59,15 @@ public
         return null;
     }
     
+    public UserAccount authenticateUser(String name, String password) {
+        for(UserAccount ua: this.userAccounts) {
+            if(ua.getUsername().equals(name) && ua.getPassword().equals(password)) {
+                return ua;
+            }
+        }
+        return null;
+    }
+    
     public Boolean accountExists(String username, String password, String role) {
         for(UserAccount u: this.userAccounts) {
             if(u.getUsername().equals(username) && u.getPassword().equals(password) && u.getRole().equals(role)) {
@@ -67,6 +76,19 @@ public
         }
         
         return false;
+    }
+    
+    public Boolean isUnique(String username){
+        for (UserAccount u:this.userAccounts){
+            if(u.getUsername().equals(username)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public String[] getAllRoles() {
+       return Role.getAllRoles();
     }
     
 }
