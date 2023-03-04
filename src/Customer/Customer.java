@@ -18,13 +18,44 @@ import Library.Material.Magazine;
 public
         class Customer extends Person{
    private ArrayList<RentalRequest> customerRentalRequests;
-   
+   private RentalRequest curRentalRequest;
    
    public Customer() {
         super();
         this.customerRentalRequests = new ArrayList<RentalRequest>();
     }
 
+    public
+    RentalRequest getCurRentalRequest() {
+        return curRentalRequest;
+    }
+
+    public
+    void setCurRentalRequest(RentalRequest curRentalRequest) {
+        this.curRentalRequest = curRentalRequest;
+    }
+
+    public
+    String getPersonid() {
+        return personid;
+    }
+
+    public
+    void setPersonid(String personid) {
+        this.personid = personid;
+    }
+
+    public
+    String getName() {
+        return name;
+    }
+
+    public
+    void setName(String name) {
+        this.name = name;
+    }
+   
+   
     public
     ArrayList<RentalRequest> getCustomerRentalRequests() {
         return customerRentalRequests;

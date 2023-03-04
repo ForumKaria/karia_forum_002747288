@@ -62,20 +62,20 @@ public
         Title2 = new javax.swing.JLabel();
         genreTxt = new javax.swing.JTextField();
         addBookJBtn = new javax.swing.JButton();
-        genreTxt1 = new javax.swing.JTextField();
+        pageTxt = new javax.swing.JTextField();
         Title3 = new javax.swing.JLabel();
         Title4 = new javax.swing.JLabel();
-        genreTxt2 = new javax.swing.JTextField();
+        bindingTxt = new javax.swing.JTextField();
         Title5 = new javax.swing.JLabel();
-        genreTxt3 = new javax.swing.JTextField();
+        langTxt = new javax.swing.JTextField();
         Title6 = new javax.swing.JLabel();
-        titleTxt1 = new javax.swing.JTextField();
+        companyNameTxt = new javax.swing.JTextField();
         Title7 = new javax.swing.JLabel();
-        authorTxt1 = new javax.swing.JTextField();
         addMagazineJBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        issueTypeCombo = new javax.swing.JComboBox<>();
 
         Title.setText("TITLE");
 
@@ -111,6 +111,8 @@ public
 
         jLabel1.setText("ADD MATERIAL");
 
+        issueTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +132,7 @@ public
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Title5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(genreTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(langTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Title)
@@ -142,7 +144,7 @@ public
                             .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(authorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(genreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genreTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Title4)
@@ -150,8 +152,12 @@ public
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genreTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(bindingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(addMagazineJBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,13 +165,9 @@ public
                             .addComponent(Title7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(authorTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(addMagazineJBtn)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(companyNameTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(issueTypeCombo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,24 +191,24 @@ public
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Title3)
-                            .addComponent(genreTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addMagazineJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Title6)
-                            .addComponent(titleTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(companyNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Title7)
-                            .addComponent(authorTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(issueTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title5)
-                    .addComponent(genreTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(langTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title4)
-                    .addComponent(genreTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bindingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -222,37 +224,38 @@ public
 
     private void addBookJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookJBtnActionPerformed
         // TODO add your handling code here:
-        String materialType = (String) materialCombo.getSelectedItem();
-        String title = fieldtitle.getText();
-        Date date = fieldDate.getDate();
-
-        String author = fieldauthor.getText();
-        String genre = fieldgenre.getText();
-        String pages = fieldpages.getText();
-        String lang = fieldlang.getText();
-        String typeOfBinding = (String) bindingCombo.getSelectedItem();
-
-        String company = fieldcompany.getText();
-        String issue = (String) issueCombo.getSelectedItem();
+        
+        String title = titleTxt.getText();
+        String author = authorTxt.getText();
+        String genre = genreTxt.getText();
+        String pages = pageTxt.getText();
+        String lang = langTxt.getText();
+        String typeOfBinding = (String) bindingTxt.getText();
+        Date date = jDateChooser1.getDate();
+        
 
         //create author and genre, add them to respective directory, and return the author or genre
         Author a = currentLib.getAuthorDirectory().addAuthor(author);
         Genre g =  currentLib.getGenreDirectory().addGenre(genre);
 
-        if (materialType.equals("Book")){
+        
             currentLib.getBookDirectory().addBook(title, date, a, g, Integer.valueOf(pages), lang, typeOfBinding);
-        }else{
-            currentLib.getMagazineDirectory().addMagazine(title, date, company, issue);
-        }
-
+       
+            
         JOptionPane.showMessageDialog(null, "material added");
 
         clearAll();
-     
+
+
+  
     }//GEN-LAST:event_addBookJBtnActionPerformed
 
     private void addMagazineJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMagazineJBtnActionPerformed
         // TODO add your handling code here:
+        String company = fieldcompany.getText();
+        String issue = (String) issueCombo.getSelectedItem();
+        currentLib.getMagazineDirectory().addMagazine(title, date, company, issue);
+        
     }//GEN-LAST:event_addMagazineJBtnActionPerformed
     
     public void emptyInput(){
@@ -281,15 +284,15 @@ public
     private javax.swing.JButton addBookJBtn;
     private javax.swing.JButton addMagazineJBtn;
     private javax.swing.JTextField authorTxt;
-    private javax.swing.JTextField authorTxt1;
+    private javax.swing.JTextField bindingTxt;
+    private javax.swing.JTextField companyNameTxt;
     private javax.swing.JTextField genreTxt;
-    private javax.swing.JTextField genreTxt1;
-    private javax.swing.JTextField genreTxt2;
-    private javax.swing.JTextField genreTxt3;
+    private javax.swing.JComboBox<String> issueTypeCombo;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField langTxt;
+    private javax.swing.JTextField pageTxt;
     private javax.swing.JTextField titleTxt;
-    private javax.swing.JTextField titleTxt1;
     // End of variables declaration//GEN-END:variables
 }

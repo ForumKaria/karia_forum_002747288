@@ -29,7 +29,22 @@ public
         this.customerlist.add(customer);
     }
     
-    public Customer createCustomer() {
+    
+    public Customer findById(String id){
+        for (Customer c:customerlist){
+            if (c.getPersonid().equals(id)){
+                return c;
+            }
+        }
         return null;
+    }
+    
+    public Customer createCustomer(String id, String name){
+        Customer c = new Customer();
+        c.setPersonid(id);
+        c.setName(name);
+        
+        this.customerlist.add(c);
+        return c;
     }
 }

@@ -10,18 +10,35 @@ import java.util.ArrayList;
  *
  * @author forumkaria
  */
-public
-        class AuthorDirectory {
-    ArrayList<Author> authorDirectory;
-
-    public
-    ArrayList<Author> getAuthorDirectory() {
-        return authorDirectory;
+public class AuthorDirectory {
+    ArrayList<Author> authors;
+    
+    public AuthorDirectory(){
+        this.authors = new ArrayList<Author>();
     }
 
-    public
-    void addAuthor(Author author) {
-        this.authorDirectory.add(author);
+    public ArrayList<Author> getAuthors() {
+        return authors;
     }
     
+    public Author addAuthor(String name){
+        Author author = new Author(name);
+        for(Author a: this.authors){
+            if (!a.getName().equals(name)){
+                this.authors.add(author);
+            }
+        }
+
+        return author;
+    }
+    
+    public Author findAuthor(String name){
+        for (Author a: this.authors){
+            if (a.getName().equals(name)){
+                return a;
+            }
+        }
+        return null;
+    }
 }
+

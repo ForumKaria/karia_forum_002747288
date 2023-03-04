@@ -13,6 +13,7 @@ import Library.Employee.EmployeeDirectory;
 import Library.Employee.Librarian;
 import Library.Genre.GenreDirectory;
 import Library.Material.MagazineDirectory;
+import Library.RentalRequest.RentalRequestDirectory;
 
 /**
  *
@@ -28,6 +29,7 @@ public
     private int buildingNo;
     private Librarian librarian;
     private EmployeeDirectory employeeDirectory;
+    private RentalRequestDirectory rentalRequestDirectory;
     
     
     public Library(int buildingNo) {
@@ -39,13 +41,24 @@ public
         this.genreDirectory = new GenreDirectory();
         this.librarian = new Librarian();
         this.employeeDirectory = new EmployeeDirectory();
+        this.rentalRequestDirectory = new RentalRequestDirectory();
         
         // create a restaurant manager here
 //        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SysAdmin");
         
     }
-    
 
+    public
+    RentalRequestDirectory getRentalRequestDirectory() {
+        return rentalRequestDirectory;
+    }
+
+    public
+    void setRentalRequestDirectory(RentalRequestDirectory rentalRequestDirectory) {
+        this.rentalRequestDirectory = rentalRequestDirectory;
+    }
+    
+    
     public
     EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
@@ -84,11 +97,6 @@ public
     public
     GenreDirectory getGenreDirectory() {
         return genreDirectory;
-    }
-
-    public
-    CustomerDirectory getCustomerDirectory() {
-        return customerDirectory;
     }
 
     public

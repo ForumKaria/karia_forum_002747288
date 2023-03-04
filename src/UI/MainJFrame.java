@@ -31,6 +31,14 @@ public class MainJFrame extends javax.swing.JFrame {
         populateDropdown();
 
     }
+    
+    public MainJFrame(AppSystem appSystem) {
+        initComponents();
+        this.appSystem = appSystem;
+        
+        populateDropdown();
+
+    }
 
     public MainJFrame(AppSystem appSystem, Branch branch, UserAccount useraccount) {
         initComponents();

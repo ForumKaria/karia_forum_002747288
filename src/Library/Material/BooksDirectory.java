@@ -4,25 +4,50 @@
  */
 package Library.Material;
 
+import Library.Author.Author;
+import Library.Genre.Genre;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author forumkaria
  */
-public
-        class BooksDirectory {
-    ArrayList<Book> booksDirectory;
-
-
-    public
-    ArrayList<Book> getBooksDirectory() {
-        return booksDirectory;
+public class BooksDirectory {
+    ArrayList<Book> books;
+    
+    public BooksDirectory(){
+        this.books = new ArrayList<Book>();
     }
 
-    public
-    void addToBookDirectory(Book book) {
-        this.booksDirectory.add(book);
+    public ArrayList<Book> getBooks() {
+        return books;
     }
+    
+    public Book addBook(String name, Date date, Author author, Genre genre, int pages, String language, String type){
+        Book book = new Book(name, date, author, genre, pages, language, type);
+        this.books.add(book);
+        
+        return book;
+    }
+    
+    public Book findBook(String title){
+        for (Book b: books){
+            if (b.getName().equals(title)){
+                return b;
+            }
+        }
+        return null;
+    }
+    
+    public Book findBookById(String bookId){
+        for (Book b: books){
+            if (b.getMaterialId().equals(bookId)){
+                return b;
+            }
+        }
+        return null;
+    }
+    
     
 }

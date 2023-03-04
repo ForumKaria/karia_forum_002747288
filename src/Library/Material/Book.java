@@ -5,58 +5,70 @@
 package Library.Material;
 
 import Library.Author.Author;
+import Library.Genre.Genre;
+import java.util.Date;
 
 /**
  *
  * @author forumkaria
  */
-public
-        class Book {
+public class Book extends Material{
+    private Author author;
+    private Genre genre;
+    private int pages;
+    private String language;
+    private String bindingType;
     
-    Author author;
-    String title;
-    String genre;
-    int bookId;
+    
+    public Book(String name, Date date, Author author, Genre genre, int pages, String language, String type){
+        super();
+        this.name = name;
+        this.date = date;
+        this.author = author;
+        this.genre = genre;
+        this.pages = pages;
+        this.language = language;
+        this.bindingType = type;
+    }
 
-    public
-    Author getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public
-    void setAuthor(Author author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
-    public
-    String getTitle() {
-        return title;
-    }
-
-    public
-    void setTitle(String title) {
-        this.title = title;
-    }
-
-    public
-    String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public
-    void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
-    public
-    int getBookId() {
-        return bookId;
+    public int getPages() {
+        return pages;
     }
 
-    public
-    void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setPages(int pages) {
+        this.pages = pages;
     }
-    
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getBindingType() {
+        return bindingType;
+    }
+
+    public void setBindingType(String bindingType) {
+        this.bindingType = bindingType;
+    }
     
 }

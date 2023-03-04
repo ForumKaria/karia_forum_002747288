@@ -9,6 +9,8 @@ import Branch.Branch;
 import Customer.Customer;
 import Library.Library;
 import Library.Material.Book;
+import Library.Material.Magazine;
+import Library.RentalRequest.RentalRequest;
 import Useraccount.UserAccount;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +25,7 @@ public
     private AppSystem appSystem;
     private UserAccount userAccount;
     private DefaultTableModel materialTableModel;
+    private DefaultTableModel requestTableModel;
     private Branch currentBranch;
     private Library currentLibrary;
     private Customer customer;
@@ -30,50 +33,79 @@ public
      * Creates new form BranchManagerJFrame
      */
     public
-            BranchManagerJFrame() {
+            BranchManagerJFrame(AppSystem appSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.appSystem = appSystem;
         this.userAccount = userAccount;
         this.materialTableModel = (DefaultTableModel) materialTable.getModel();
-        this.currentBranch = appSystem.getBranches().findBranchForEmployee(ua);
-        this.currentLib = currentBranch.getLibrary();
+        this.currentBranch = branch;
+        this.currentLibrary = currentBranch.getLibrary();
+        totalRev.setText(Integer.toString(currentLibrary.getRentalRequestDirectory().calculateTotalRevenue()));
         
-        this.c = this.app.getCustomerDirectory().findById(ua.getAccountid());
-        
-        populateBook();
-        populateMag();
+        populateMaterial();
+        populateRentalReq();
       
     }
+            
+            public BranchManagerJFrame(){
+            }
 
-    public
-    BranchManagerJFrame(AppSystem appSystem, UserAccount userAccount) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     
-    public void populateBook(){
+    public void populateMaterial(){
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
-        bookTableModel.setRowCount(0);
+        materialTableModel.setRowCount(0);
         
             for (Book b : this.currentBranch.getLibrary().getBookDirectory().getBooks()) {
-                Object[] row = new Object[10];
+                Object[] row = new Object[13];
                 
-                row[0] = b.getSerialNo();
+                row[0] = b.getMaterialId();
                 row[1] = b.getName();
-                row[2] = DateFormat.format(b.getRegisterDate());
+                row[2] = DateFormat.format(b.getDate());
                 row[3] = b.getAuthor().getName();
                 row[4] = b.getGenre().getGenre();
                 row[5] = b.getPages();
                 row[6] = b.getLanguage();
                 row[7] = b.getBindingType();
-                row[8] = b.getAvailString(b.getIsAvailable());
-                row[9] = this.currentLib.getBuildingNo();
+                row[8] = b.getAvailability(b.getIsAvailable());
+                row[9] = this.currentLibrary.getBuildingNo();
 
-                bookTableModel.addRow(row);
+                
+                
+                materialTableModel.addRow(row);}
+            for (Magazine m : this.currentBranch.getLibrary().getMagazineDirectory().getMagazines()) {
+                Object[] row = new Object[13];
+               
+                row[10] = m.getCompany();
+                row[11] = m.getIssueType();
+                row[12] = m.getAvailability(m.getIsAvailable());
+                materialTableModel.addRow(row);
+               }  
             }  
-        }  
+    
+            public void populateRentalReq(){
+        if (this.currentLibrary.getRentalRequestDirectory().getMasterRequestList().size()>0){
+            requestTableModel.setRowCount(0);
+            for (RentalRequest rr : this.currentLibrary.getRentalRequestDirectory().getMasterRequestList()) {
+
+                Object[] row = new Object[8];
+
+                row[0] = rr;
+                row[1] = rr.getCustomer().getId();
+                row[2] = (rr.getBook() == null) ? "-" : rr.getBook().getName(); 
+                row[3] = (rr.getMagazine()== null) ? "-" :rr.getMagazine().getName();
+                row[4] = rr.getDuration();
+                row[5] = rr.getPrice();
+                row[6] = rr.getStatus();
+                row[7] = rr.getLibrary().getBuildingNo();
+
+                requestTableModel.addRow(row);
+            }
+        }   
+    }
+        
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +125,7 @@ public
         reqTable = new javax.swing.JTable();
         RentReqRec = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        totalRev = new javax.swing.JTextField();
         logoutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,7 +140,7 @@ public
                 {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Serial No", "Material Type", "Name", "Register date", "Author", "Genre", "No of Pages", "Language", "Binding type", "Company Name", "Issue Type", "Is Available", "Library"
+                "ID", "Type", "Name", "Date", "Author", "Genre", "No of Pages", "Language", "Binding type", "Company Name", "Issue Type", "Availability", "Library"
             }
         ) {
             Class[] types = new Class [] {
@@ -150,6 +182,12 @@ public
 
         jLabel2.setText("TOTAL REVENUE");
 
+        totalRev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalRevActionPerformed(evt);
+            }
+        });
+
         logoutBtn.setText("LOGOUT");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,15 +202,6 @@ public
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 20, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(RentReqRec)
-                        .addGap(348, 348, 348))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -182,12 +211,21 @@ public
                         .addGap(295, 295, 295)
                         .addComponent(jLabel2)
                         .addGap(65, 65, 65)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(totalRev, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(305, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(393, 393, 393)
                 .addComponent(logoutBtn)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(RentReqRec)
+                        .addGap(348, 348, 348))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +241,7 @@ public
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(logoutBtn)
                 .addGap(16, 16, 16))
@@ -244,6 +282,10 @@ public
         this.setVisible(false);
         MainJFrame mj = new MainJFrame(this.appSystem);
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void totalRevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalRevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalRevActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,9 +336,9 @@ public
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JTable materialTable;
     private javax.swing.JTable reqTable;
+    private javax.swing.JTextField totalRev;
     // End of variables declaration//GEN-END:variables
 }

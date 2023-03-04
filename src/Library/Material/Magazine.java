@@ -4,11 +4,40 @@
  */
 package Library.Material;
 
+import java.util.Date;
+
 /**
  *
  * @author forumkaria
  */
-public
-        class Magazine {
+public class Magazine extends Material{
+    private String company;
+    private String issueType;
     
+    public Magazine(String name, Date date, String company, String issueType){
+        super();
+        this.name = name;
+        this.date = date;
+        this.company = company;
+        this.issueType = issueType;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getIssueType() {
+        return issueType;
+    }
+
+    public void setIssueType(String issueType) {
+        this.issueType = issueType;
+    }
+    
+    
+            
 }

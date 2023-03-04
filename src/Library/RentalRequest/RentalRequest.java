@@ -20,7 +20,7 @@ public
     Magazine magazine;
     String id;
     private static int count = 0;
-    private static int price = 10;
+    int price = 10;
     String status;
     int duration;
     Customer customer;
@@ -78,14 +78,9 @@ public
         RentalRequest.count = count;
     }
 
-    public static
+    public
     int getPrice() {
         return price;
-    }
-
-    public static
-    void setPrice(int price) {
-        RentalRequest.price = price;
     }
 
     public

@@ -8,7 +8,16 @@ package Library.Genre;
  *
  * @author forumkaria
  */
-public
-        class Genre {
+public class Genre {
+    private String genre;
+    
+    public Genre(String g){
+        this.genre = g;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+    
     
 }

@@ -6,7 +6,13 @@ package UI;
 
 import AppSystem.AppSystem;
 import Branch.Branch;
+import Customer.Customer;
+import Library.Library;
+import Library.Material.Book;
+import Library.Material.Magazine;
+import Library.RentalRequest.RentalRequest;
 import Useraccount.UserAccount;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,10 +24,18 @@ public
     /**
      * Creates new form CustomerJFrame
      */
-    
+        
     private AppSystem appSystem;
     UserAccount userAccount;
     Branch branch;
+    Customer customer;
+    RentalRequest curRentalRequest;
+    
+    Library library;
+    
+    private DefaultTableModel bookTableModel;
+    private DefaultTableModel magazineTableModel;
+    private DefaultTableModel historytableModel;
     
     public
             CustomerJFrame() {
@@ -34,7 +48,14 @@ public
        
        this.appSystem = appSystem;
        this.branch = branch;
+       this.library = branch.getLibrary();
        this.userAccount = useraccount;
+       this.customer = branch.getCustomerDirectory().findById(useraccount.getAccountId());
+       
+       this.bookTableModel = (DefaultTableModel) bookTable.getModel();
+       this.magazineTableModel = (DefaultTableModel) magazineTable.getModel();
+       this.historytableModel = (DefaultTableModel) historyTable.getModel();
+        
     }
     
 
@@ -62,7 +83,7 @@ public
         jLabel6 = new javax.swing.JLabel();
         rentBtn = new javax.swing.JButton();
         viewBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         materialTypeTxt = new javax.swing.JTextField();
@@ -70,6 +91,7 @@ public
         bookTable = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         magazineTable = new javax.swing.JTable();
+        returnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,7 +143,12 @@ public
             }
         });
 
-        jButton3.setText("LOGOUT");
+        logoutBtn.setText("LOGOUT");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Books Available");
 
@@ -179,6 +206,13 @@ public
         });
         jScrollPane4.setViewportView(magazineTable);
 
+        returnBtn.setText("RETURN");
+        returnBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,14 +241,16 @@ public
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))))
+                        .addComponent(logoutBtn))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(325, 325, 325)
+                        .addGap(261, 261, 261)
                         .addComponent(rentBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(viewBtn))
+                        .addGap(50, 50, 50)
+                        .addComponent(viewBtn)
+                        .addGap(46, 46, 46)
+                        .addComponent(returnBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE))
@@ -238,12 +274,13 @@ public
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(108, 108, 108)
-                                .addComponent(jButton3))
+                                .addComponent(logoutBtn))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(returnBtn)
                             .addComponent(rentBtn)
                             .addComponent(viewBtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -303,6 +340,19 @@ public
         // TODO add your handling code here:
         
         
+        RentalRequest rr;
+        Branch branch;
+        
+        String materialserial = (materialSerialNoTxt.getText().isEmpty()) ? "-" : materialSerialNoTxt.getText();
+        String duration = durationTxt.getText();
+        String price = priceTxt.getText();
+        
+        Book book = library.getBookDirectory().findBookById(materialserial);
+        Magazine mag = library.getMagazineDirectory().findMagazineById(materialserial);
+        this.library.getRentalRequestDirectory().requestRent(Integer.parseInt(duration), book, mag, library, customer);
+//                .addRequest()
+        
+        
     }//GEN-LAST:event_rentBtnActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
@@ -310,6 +360,19 @@ public
         
         
     }//GEN-LAST:event_viewBtnActionPerformed
+
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_returnBtnActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        
+       this.setVisible(false);
+        MainJFrame mj = new MainJFrame(this.appSystem); 
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,7 +419,6 @@ public
     private javax.swing.JTable bookTable;
     private javax.swing.JTextField durationTxt;
     private javax.swing.JTable historyTable;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,12 +431,14 @@ public
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JTable magazineTable;
     private javax.swing.JTextField materialSerialNoTxt;
     private javax.swing.JTextField materialTitleTxt;
     private javax.swing.JTextField materialTypeTxt;
     private javax.swing.JTextField priceTxt;
     private javax.swing.JButton rentBtn;
+    private javax.swing.JButton returnBtn;
     private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
 }

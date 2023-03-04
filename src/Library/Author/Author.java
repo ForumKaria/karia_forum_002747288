@@ -11,7 +11,10 @@ package Library.Author;
 public
         class Author {
     String name;
-    int rank;
+    
+    public Author(String name){
+        this.name = name;
+    }
 
     public
     String getName() {
@@ -23,15 +26,5 @@ public
         this.name = name;
     }
 
-    public
-    int getRank() {
-        return rank;
-    }
-
-    public
-    void setRank(int rank) {
-        this.rank = rank;
-    }
-    
     
 }
