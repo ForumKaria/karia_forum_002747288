@@ -19,13 +19,29 @@ public class Employee extends Person{
     private Library lib;
     private int libraryBuildingNo;
     
-    public Employee(int experience, String designation, String id){
+    public Employee(int experience, String designation, String id, Person p){
+//        super(p.personid, p.name);
         super();
         this.employeeId = id; 
         this.experience = experience;
         this.designation = designation;
-        this.libraryBuildingNo = this.lib.getBuildingNo();
+        //this.libraryBuildingNo = this.lib.getBuildingNo();
     }
+    
+    public Employee(int experience, String designation, String id){
+//        super(p.personid, p.name);
+        super();
+        this.employeeId = id; 
+        this.experience = experience;
+        this.designation = designation;
+       
+    }
+
+    public
+    Library getLib() {
+        return lib;
+    }
+
     
     public void setLibrary(Library lib){
         this.lib = lib;

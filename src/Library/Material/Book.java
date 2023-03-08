@@ -18,9 +18,12 @@ public class Book extends Material{
     private int pages;
     private String language;
     private String bindingType;
+    Float price;
+
+
     
     
-    public Book(String name, Date date, Author author, Genre genre, int pages, String language, String type){
+    public Book(String name, Date date, Author author, Genre genre, int pages, String language, String type, Float price){
         super();
         this.name = name;
         this.date = date;
@@ -29,6 +32,8 @@ public class Book extends Material{
         this.pages = pages;
         this.language = language;
         this.bindingType = type;
+        this.materialType = "Book";
+        this.price = price;
     }
 
     public Author getAuthor() {
@@ -41,6 +46,15 @@ public class Book extends Material{
 
     public Genre getGenre() {
         return genre;
+    }
+        public
+    Float getPrice() {
+        return price;
+    }
+
+    public
+    void setPrice(Float price) {
+        this.price = price;
     }
 
     public void setGenre(Genre genre) {

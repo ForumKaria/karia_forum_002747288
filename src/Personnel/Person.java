@@ -12,6 +12,15 @@ public
         class Person {
     public String personid;
     public  String name;
+    
+    public Person(){
+        
+    }
+    
+    public Person(String id, String name) {
+        personid = id;
+        name = name;
+    }
 
     public
     String getId() {

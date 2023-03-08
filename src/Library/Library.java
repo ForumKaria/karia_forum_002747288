@@ -43,11 +43,34 @@ public
         this.employeeDirectory = new EmployeeDirectory();
         this.rentalRequestDirectory = new RentalRequestDirectory();
         
-        // create a restaurant manager here
-//        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SysAdmin");
-        
     }
 
+    public void acceptRentalReq(String rrId, String mType) {
+        this.rentalRequestDirectory.findRentalRequests(rrId).setStatus("Rented");
+        if (mType == "Book") {
+            String bId = this.rentalRequestDirectory.findRentalRequests(rrId).getBook().getMaterialId();
+            this.bookDirectory.findBookById(bId).setIsAvailable(false);
+        } else {
+            String mId = this.rentalRequestDirectory.findRentalRequests(rrId).getMagazine().getMaterialId();
+            this.magazineDirectory.findMagazineById(mId).setIsAvailable(false);
+        }
+    }
+
+    public void rejectRentalReq(String rrId) {
+        this.rentalRequestDirectory.findRentalRequests(rrId).setStatus("Denied");
+    }
+
+    public void returnedRentalReq(String rrId, String mType) {
+        this.rentalRequestDirectory.findRentalRequests(rrId).setStatus("Returned");
+        if (mType == "Book") {
+            String bId = this.rentalRequestDirectory.findRentalRequests(rrId).getBook().getMaterialId();
+            this.bookDirectory.findBookById(bId).setIsAvailable(true);
+        } else {
+            String mId = this.rentalRequestDirectory.findRentalRequests(rrId).getMagazine().getMaterialId();
+            this.magazineDirectory.findMagazineById(mId).setIsAvailable(true);
+        }
+    }
+    
     public
     RentalRequestDirectory getRentalRequestDirectory() {
         return rentalRequestDirectory;

@@ -6,7 +6,11 @@ package AppSystem;
 
 import Branch.Branch;
 import Customer.CustomerDirectory;
+import Library.Employee.Employee;
+import Library.Employee.EmployeeDirectory;
 import Role.AdminRole;
+import Role.LibrarianRole;
+import Useraccount.UserAccount;
 import Useraccount.UserAccountDirectory;
 import java.util.ArrayList;
 
@@ -18,16 +22,22 @@ import java.util.ArrayList;
 public
         class AppSystem {
 
+    
     ArrayList<Branch> branches;
     private UserAccountDirectory topLevelUserAccountDirectory;
-
+    private CustomerDirectory customerDirectory;
+    private EmployeeDirectory employeeDirectory;
+      
     
     public AppSystem(){
+                // ADD MOCK DATA
         this.branches = new ArrayList<Branch>();
+        this.customerDirectory = new CustomerDirectory();
         this.topLevelUserAccountDirectory = new UserAccountDirectory();
         
         // CREATING ADMIN
         this.topLevelUserAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
+
     }
     
     public static
@@ -47,6 +57,10 @@ public
     public
     void setBranches(ArrayList<Branch> branches) {
         this.branches = branches;
+    }
+    
+    public CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
     }
 
     public UserAccountDirectory getTopLevelUserAccountDirectory() {
@@ -75,4 +89,6 @@ public
     public void deleteBranch(Branch b){
         this.branches.remove(b);
     }
+    
+
 }

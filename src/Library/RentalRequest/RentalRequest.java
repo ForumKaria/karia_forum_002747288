@@ -24,16 +24,17 @@ public
     String status;
     int duration;
     Customer customer;
-    Library library;
+    String branchName;
     
     
-    public RentalRequest(int duration, Book book, Magazine magazine, Library library, Customer customer){
+    public RentalRequest(int duration, Book book, Magazine magazine, String branchName, Customer customer){
         this.count++;
         this.id = "RequestId" + this.count;
         this.customer = customer;
         this.magazine = magazine;
         this.book = book;
-        this.library = library;
+        this.price = 10 * duration;
+        this.branchName = branchName;
         this.duration = duration;
         this.status = "Created";
     }
@@ -113,14 +114,12 @@ public
         this.customer = customer;
     }
 
-    public
-    Library getLibrary() {
-        return library;
+    public String getBranchName() {
+        return branchName;
     }
 
-    public
-    void setLibrary(Library library) {
-        this.library = library;
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 
     @Override

@@ -15,9 +15,10 @@ import java.util.ArrayList;
  * @author forumkaria
  */
 public class RentalRequestDirectory {
+
     private ArrayList<RentalRequest> rentalRequests;
-    
-    public RentalRequestDirectory(){
+
+    public RentalRequestDirectory() {
         this.rentalRequests = new ArrayList<RentalRequest>();
     }
 
@@ -25,19 +26,40 @@ public class RentalRequestDirectory {
         return rentalRequests;
     }
 
-    public void requestRent(int duration, Book book, Magazine magazine, Library library, Customer customer) {
-        RentalRequest rr = new RentalRequest( duration, book,  magazine,  library,  customer);
+    public RentalRequest requestRent(int duration, Book book, Magazine magazine, String branchName, Customer customer) {
+        RentalRequest rr = new RentalRequest(duration, book, magazine, branchName, customer);
         rentalRequests.add(rr);
+        System.out.println("SIZE" + rentalRequests);
+        return rr;
     }
     
-    public int calculateTotalRevenue(){
+    public void removeFromRentalRequests(String id) {
+        for (RentalRequest rr : this.rentalRequests) {
+            if(rr.getId().equals(id)){
+                this.rentalRequests.remove(rr);
+            }
+        }
+    }
+    
+    public RentalRequest findRentalRequests(String id) {
+        for (RentalRequest rr : rentalRequests) {
+            if(rr.getId().equals(id)){
+                return rr;
+            }
+        }
+        return null;
+    }
+
+    
+    public int calculateTotalRevenue() {
         int sum = 0;
-        for(RentalRequest rr : rentalRequests){
-            sum = sum + rr.getPrice() * rr.getDuration();
+        for (RentalRequest rr : rentalRequests) {
+            if (rr.getStatus().equals("Rented") || rr.getStatus().equals("Returned")) {
+                sum = sum + rr.getPrice();
+            }
+
         }
         return sum;
     }
-    
-    
 
 }

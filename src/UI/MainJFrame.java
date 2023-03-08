@@ -35,7 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame(AppSystem appSystem) {
         initComponents();
         this.appSystem = appSystem;
-        
+//        this.setVisible(true);
         populateDropdown();
 
     }
@@ -49,6 +49,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.userAccount = userAccount;
         populateDropdown();
 
+        System.out.println(branch);
 
     }
 
@@ -73,27 +74,33 @@ public class MainJFrame extends javax.swing.JFrame {
         fieldpassword = new javax.swing.JTextField();
         fieldusername1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fieldpassword.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.add(fieldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 235, 168, 42));
+
+        fieldusername1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.add(fieldusername1, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 162, 168, 42));
 
-        jLabel1.setText("WELCOME TO MUMBAI PUBLIC LIBRARY");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 260, 40));
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 18)); // NOI18N
+        jLabel1.setText("WELCOME");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 130, 40));
 
-        jButton1.setText("LOGIN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        loginBtn.setText("LOGIN");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 80, 30));
+        jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 100, 40));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "librarian", "branch manager", "customer" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,33 +138,37 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         Boolean foundUser = false;
         
         if(this.appSystem.getTopLevelUserAccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText()) != null) {
             UserAccount user = this.appSystem.getTopLevelUserAccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText());
             foundUser = true;
-            user.getRole().getWorkArea(appSystem, branch, userAccount);
+            user.getRole().getWorkArea(appSystem, branch, user);
             this.setVisible(false);
         } else {
             for(Branch branch: this.appSystem.getBranches()) {
                 if(branch.getBranchuseraccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText()) != null) {
                     UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(fieldusername1.getText(), fieldpassword.getText());
                     foundUser = true;
-                    branchUser.getRole().getWorkArea(appSystem, branch, userAccount);
-                    this.setVisible(false);
+                    branchUser.getRole().getWorkArea(appSystem, branch, branchUser);
                 }
             }
         }
+        
+        
+        
+        
         // if user not found
         if(!foundUser) {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
@@ -205,9 +216,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JTextField fieldpassword;
     private javax.swing.JTextField fieldusername1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginBtn;
     // End of variables declaration//GEN-END:variables
 }

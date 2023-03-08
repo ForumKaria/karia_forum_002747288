@@ -33,32 +33,14 @@ public
     public
             LibrarianJFrame(AppSystem appSystem, Branch branch, UserAccount useraccount) {
         initComponents();
+         this.setVisible(true);
         
         this.appSystem = appSystem;
         this.useraccount = useraccount;
         this.branch = branch;
         
-//        this.tableModel = (DefaultTableModel) jTable1.getModel();
-        
-//        populate();
+        System.out.println("THISSSSSSS" + branch);
     }
-
-//            
-//    public void populate() {
-//        
-//        tableModel.setRowCount(0);
-//        for(Customer c: this.branch.getCustomerDirectory().getCustomerlist()) {
-//            UserAccount u = this.branch.getUseraccountDirectory().findById(c.getId());
-//            
-//            Object[] row = new Object[4];
-//            
-//            row[0] = c.getId();
-//            row[1] = c.getName();
-//            row[2] = u.getUsername();
-//            row[3] = u.getPassword();
-//            
-//            tableModel.addRow(row);
-//        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,19 +54,39 @@ public
         jPanel1 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        materialBtn = new javax.swing.JButton();
+        rentalReqBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jButton1.setText("LOGOUT");
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("MATERIAL");
+        logoutBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        logoutBtn.setText("LOGOUT");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("RENTAL REQUEST");
+        materialBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        materialBtn.setText("MATERIAL");
+        materialBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materialBtnActionPerformed(evt);
+            }
+        });
+
+        rentalReqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        rentalReqBtn.setText("RENTAL REQUEST");
+        rentalReqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentalReqBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,26 +96,26 @@ public
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(rentalReqBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(materialBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jButton1)
+                .addComponent(logoutBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(134, 134, 134)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(materialBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rentalReqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(184, Short.MAX_VALUE))
         );
 
@@ -126,10 +128,26 @@ public
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MainJFrame mj = new MainJFrame(this.appSystem, this.branch, this.useraccount);
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void rentalReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalReqBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new RentalRequestJPanel(appSystem, branch ,useraccount));
+    }//GEN-LAST:event_rentalReqBtnActionPerformed
+
+    private void materialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new AddMaterialJPanel(appSystem,branch, useraccount));
+    }//GEN-LAST:event_materialBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    }
+    
     public static
             void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -163,45 +181,18 @@ public
         java.awt.EventQueue.invokeLater(new Runnable() {
             public
                     void run() {
-                new LibrarianJFrame().setVisible(true);
+//                new LibrarianJFrame().setVisible(true);
             }
         });
     }
-    public void displayBooks(){
-//        BookDirectory books = this.business.getBooks();
-//        
-//        if(books.getBooks().size() > 0){
-//            
-//            tableModel.setRowCount(0);
-//            for(Book a : books.getBooks()){
-//                
-//                Object row[] = new Object[5];
-//                row[0] = a;
-//                row[1] = a.getName();
-//                row[2] = a.getAuthorName();
-//                row[3] = a.getGenreName();
-//                
-//                
-//                tableModel.addRow(row);
-//                
-//            }
-//        }
-//        else{
-//            System.out.println("Empty List");
-//        }   
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton materialBtn;
+    private javax.swing.JButton rentalReqBtn;
     // End of variables declaration//GEN-END:variables
 
-    private
-    void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

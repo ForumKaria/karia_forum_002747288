@@ -4,8 +4,10 @@
  */
 package Branch;
 
+import Customer.Customer;
 import Customer.CustomerDirectory;
 import Library.Library;
+import Useraccount.UserAccount;
 import Useraccount.UserAccountDirectory;
 
 /**
@@ -19,20 +21,12 @@ public
     UserAccountDirectory branchuseraccountDirectory;
     CustomerDirectory customerDirectory;
 
-    public
-    CustomerDirectory getCustomerDirectory() {
-        return customerDirectory;
-    }
-
-    public
-    void setCustomerDirectory(CustomerDirectory customerDirectory) {
-        this.customerDirectory = customerDirectory;
-    }
     
     
     public Branch(String name){
         this.name = name; 
         this.branchuseraccountDirectory = new UserAccountDirectory();
+        this.library = new Library(01);
     }
 
     public
@@ -66,6 +60,25 @@ public
 
     public void setBranchuseraccountDirectory(UserAccountDirectory branchuseraccountDirectory) {
         this.branchuseraccountDirectory = branchuseraccountDirectory;
+    }
+    
+    public
+    CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
+    }
+
+    public
+    void setCustomerDirectory(CustomerDirectory customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
+    
+    public UserAccount findById(String id){
+        for (UserAccount u: branchuseraccountDirectory.getUserAccounts()){
+            if (u.getAccountId().equals(id)){
+                return u;
+            }
+        }
+        return null;
     }
     
     @Override

@@ -18,8 +18,8 @@ public
         class BranchManagerRole extends Role{
     
     @Override
-    public JFrame getWorkArea(AppSystem appSystem, Branch branch, UserAccount useraccount) {
-        return new BranchManagerJFrame(appSystem, branch, useraccount);
+    public JFrame getWorkArea(AppSystem appSystem, Branch branch, UserAccount userAccount) {
+        return new BranchManagerJFrame(appSystem, branch, userAccount);
     }
     
 }

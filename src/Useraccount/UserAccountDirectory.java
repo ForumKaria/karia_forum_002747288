@@ -87,6 +87,7 @@ public
         return true;
     }
     
+    
     public String[] getAllRoles() {
        return Role.getAllRoles();
     }

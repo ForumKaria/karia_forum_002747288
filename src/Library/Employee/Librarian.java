@@ -23,6 +23,4 @@ public class Librarian extends Person{
     public ArrayList<RentalRequest> getRequestList() {
         return requestList;
     }
-
-
 }

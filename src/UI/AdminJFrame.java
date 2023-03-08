@@ -61,6 +61,7 @@ public class AdminJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        customerJBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         customerJBtn.setText("CUSTOMER");
         customerJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +69,7 @@ public class AdminJFrame extends javax.swing.JFrame {
             }
         });
 
+        employeeJBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         employeeJBtn.setText("EMPLOYEE");
         employeeJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +77,7 @@ public class AdminJFrame extends javax.swing.JFrame {
             }
         });
 
+        BranchJButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         BranchJButton.setText("BRANCH");
         BranchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +85,7 @@ public class AdminJFrame extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         logoutBtn.setText("LOGOUT");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +99,8 @@ public class AdminJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
+                .addComponent(logoutBtn)
+                .addGap(73, 73, 73)
                 .addComponent(BranchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(employeeJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +122,7 @@ public class AdminJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setTopComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,8 +145,9 @@ public class AdminJFrame extends javax.swing.JFrame {
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
 
-        this.setVisible(false);
+//        this.setVisible(false);
         MainJFrame mj = new MainJFrame(this.appSystem, this.branch, this.useraccount);
+//         jSplitPane1.setRightComponent(new MainJFrame(appSystem));
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void customerJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerJBtnActionPerformed
@@ -152,12 +157,12 @@ public class AdminJFrame extends javax.swing.JFrame {
 
     private void employeeJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeJBtnActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new EmployeeManagementJPanel());
+        jSplitPane1.setRightComponent(new EmployeeManagementJPanel(this.appSystem, this.branch, this.useraccount));
     }//GEN-LAST:event_employeeJBtnActionPerformed
 
     private void BranchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BranchJButtonActionPerformed
         // TODO add your handling code here:
-        
+        jSplitPane1.setRightComponent(new BranchJPanel(appSystem));
     }//GEN-LAST:event_BranchJButtonActionPerformed
 
     /**
@@ -193,7 +198,7 @@ public class AdminJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminJFrame().setVisible(true);
+//                new AdminJFrame().setVisible(true);
             }
         });
     }

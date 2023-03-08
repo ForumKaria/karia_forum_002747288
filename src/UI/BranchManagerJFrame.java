@@ -32,61 +32,74 @@ public
     /**
      * Creates new form BranchManagerJFrame
      */
+    
+    public BranchManagerJFrame() {
+        initComponents();
+    }
+    
     public
             BranchManagerJFrame(AppSystem appSystem, Branch branch, UserAccount userAccount) {
+                System.out.println("THISSS>>>>ISSSS");
         initComponents();
         this.setVisible(true);
         this.appSystem = appSystem;
         this.userAccount = userAccount;
         this.materialTableModel = (DefaultTableModel) materialTable.getModel();
+        this.requestTableModel = (DefaultTableModel) reqTable.getModel();
         this.currentBranch = branch;
         this.currentLibrary = currentBranch.getLibrary();
-        totalRev.setText(Integer.toString(currentLibrary.getRentalRequestDirectory().calculateTotalRevenue()));
+        totalRev.setText(String.valueOf(currentLibrary.getRentalRequestDirectory().calculateTotalRevenue()));
+        this.customer = this.appSystem.getCustomerDirectory().findById(userAccount.getAccountId());
+        
         
         populateMaterial();
         populateRentalReq();
+        
       
     }
-            
-            public BranchManagerJFrame(){
-            }
 
-
-    
     public void populateMaterial(){
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
         materialTableModel.setRowCount(0);
         
             for (Book b : this.currentBranch.getLibrary().getBookDirectory().getBooks()) {
-                Object[] row = new Object[13];
+                Object[] row = new Object[14];
                 
                 row[0] = b.getMaterialId();
-                row[1] = b.getName();
-                row[2] = DateFormat.format(b.getDate());
-                row[3] = b.getAuthor().getName();
-                row[4] = b.getGenre().getGenre();
-                row[5] = b.getPages();
-                row[6] = b.getLanguage();
-                row[7] = b.getBindingType();
-                row[8] = b.getAvailability(b.getIsAvailable());
-                row[9] = this.currentLibrary.getBuildingNo();
+                row[1] = b.getMaterialType();
+                row[2] = b.getName();
+                row[3] = DateFormat.format(b.getDate());
+                row[4] = b.getAuthor().getName();
+                row[5] = b.getGenre().getGenre();
+                row[6] = b.getPages();
+                row[7] = b.getLanguage();
+                row[8] = b.getBindingType();
+                row[11] = b.getAvailability(b.getIsAvailable());
+                row[12] = this.currentLibrary.getBuildingNo();
+                row[13] = b.getPrice();
 
-                
-                
-                materialTableModel.addRow(row);}
+                materialTableModel.addRow(row);
+            }
             for (Magazine m : this.currentBranch.getLibrary().getMagazineDirectory().getMagazines()) {
-                Object[] row = new Object[13];
+                Object[] row = new Object[14];
                
-                row[10] = m.getCompany();
-                row[11] = m.getIssueType();
-                row[12] = m.getAvailability(m.getIsAvailable());
+                row[0] = m.getMaterialId();
+                row[1] = m.getMaterialType();
+                row[2] = m.getName();
+                row[3] = DateFormat.format(m.getDate());
+                
+                row[9] = m.getCompany();
+                row[10] = m.getIssueType();
+                row[11] = m.getAvailability(m.getIsAvailable());
+                row[12] = this.currentLibrary.getBuildingNo();
+                row[13] = m.getPrice();
                 materialTableModel.addRow(row);
                }  
             }  
     
-            public void populateRentalReq(){
-        if (this.currentLibrary.getRentalRequestDirectory().getMasterRequestList().size()>0){
+            public void populateRentalReq() {
+        if (this.currentLibrary.getRentalRequestDirectory().getMasterRequestList().size() > 0) {
             requestTableModel.setRowCount(0);
             for (RentalRequest rr : this.currentLibrary.getRentalRequestDirectory().getMasterRequestList()) {
 
@@ -94,16 +107,23 @@ public
 
                 row[0] = rr;
                 row[1] = rr.getCustomer().getId();
-                row[2] = (rr.getBook() == null) ? "-" : rr.getBook().getName(); 
-                row[3] = (rr.getMagazine()== null) ? "-" :rr.getMagazine().getName();
+                row[2] = (rr.getBook() == null) ? "-" : rr.getBook().getName();
+                row[3] = (rr.getMagazine() == null) ? "-" : rr.getMagazine().getName();
                 row[4] = rr.getDuration();
                 row[5] = rr.getPrice();
                 row[6] = rr.getStatus();
-                row[7] = rr.getLibrary().getBuildingNo();
+                row[7] = rr.getBranchName();
 
                 requestTableModel.addRow(row);
             }
-        }   
+        }
+        
+        
+    }
+        public int calBranchRevenue(){
+        int rev = this.currentLibrary.getRentalRequestDirectory().calculateTotalRevenue();
+        
+        return rev;
     }
         
     
@@ -125,26 +145,28 @@ public
         reqTable = new javax.swing.JTable();
         RentReqRec = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        totalRev = new javax.swing.JTextField();
         logoutBtn = new javax.swing.JButton();
+        totalRev = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         materialTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Type", "Name", "Date", "Author", "Genre", "No of Pages", "Language", "Binding type", "Company Name", "Issue Type", "Availability", "Library"
+                "ID", "Type", "Name", "Date", "Author", "Genre", "No of Pages", "Language", "Binding type", "Company Name", "Issue Type", "Availability", "Library", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,7 +179,12 @@ public
             }
         });
         jScrollPane3.setViewportView(materialTable);
+        if (materialTable.getColumnModel().getColumnCount() > 0) {
+            materialTable.getColumnModel().getColumn(11).setResizable(false);
+            materialTable.getColumnModel().getColumn(13).setResizable(false);
+        }
 
+        jLabel1.setFont(new java.awt.Font("Big Caslon", 1, 14)); // NOI18N
         jLabel1.setText("MATERIAL COLLECTION");
 
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -178,22 +205,20 @@ public
         });
         jScrollPane1.setViewportView(reqTable);
 
+        RentReqRec.setFont(new java.awt.Font("Big Caslon", 1, 14)); // NOI18N
         RentReqRec.setText("RENTAL REQUESTS RECEIVED");
 
         jLabel2.setText("TOTAL REVENUE");
 
-        totalRev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalRevActionPerformed(evt);
-            }
-        });
-
+        logoutBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         logoutBtn.setText("LOGOUT");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutBtnActionPerformed(evt);
             }
         });
+
+        totalRev.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -205,27 +230,23 @@ public
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
+                        .addGap(107, 107, 107)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(RentReqRec))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(349, 349, 349)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
+                        .addGap(269, 269, 269)
                         .addComponent(jLabel2)
-                        .addGap(65, 65, 65)
-                        .addComponent(totalRev, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(305, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(393, 393, 393)
-                .addComponent(logoutBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(RentReqRec)
-                        .addGap(348, 348, 348))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))))
+                        .addGap(81, 81, 81)
+                        .addComponent(totalRev, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addComponent(logoutBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,17 +255,17 @@ public
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(RentReqRec)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(totalRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(logoutBtn)
-                .addGap(16, 16, 16))
+                .addGap(26, 26, 26))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -282,10 +303,6 @@ public
         this.setVisible(false);
         MainJFrame mj = new MainJFrame(this.appSystem);
     }//GEN-LAST:event_logoutBtnActionPerformed
-
-    private void totalRevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalRevActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_totalRevActionPerformed
 
     /**
      * @param args the command line arguments

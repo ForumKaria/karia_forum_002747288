@@ -24,8 +24,8 @@ public class BooksDirectory {
         return books;
     }
     
-    public Book addBook(String name, Date date, Author author, Genre genre, int pages, String language, String type){
-        Book book = new Book(name, date, author, genre, pages, language, type);
+    public Book addBook(String name, Date date, Author author, Genre genre, int pages, String language, String type, Float price){
+        Book book = new Book(name, date, author, genre, pages, language, type, price);
         this.books.add(book);
         
         return book;

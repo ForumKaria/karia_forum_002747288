@@ -13,13 +13,26 @@ import java.util.Date;
 public class Magazine extends Material{
     private String company;
     private String issueType;
+            Float price;
+
+    public
+    Float getPrice() {
+        return price;
+    }
+
+    public
+    void setPrice(Float price) {
+        this.price = price;
+    }
     
-    public Magazine(String name, Date date, String company, String issueType){
+    public Magazine(String name, Date date, String company, String issueType, Float price){
         super();
         this.name = name;
         this.date = date;
         this.company = company;
         this.issueType = issueType;
+        this.materialType = "Magazine";
+        this.price = price;
     }
 
     public String getCompany() {

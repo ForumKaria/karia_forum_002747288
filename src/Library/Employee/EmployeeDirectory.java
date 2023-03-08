@@ -12,19 +12,19 @@ import java.util.ArrayList;
  * @author forumkaria
  */
 public class EmployeeDirectory {
-    ArrayList<Employee> employees;
+    public ArrayList<Employee> employees = new ArrayList<Employee>();
     private Library library;
-    
-    public EmployeeDirectory(){
-        this.employees = new ArrayList<Employee>();
-    }
 
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
     
-    public Employee createEmployee(int exp, String des,String name,String id, Library lib){
-        Employee e = new Employee(exp,des,id);
+    public Library getLibrary() {
+        return library;
+    }
+    
+    public Employee createEmployee(int exp, String des, String name, String id, Library lib){
+        Employee e = new Employee(exp, des, id);
         
         e.setId(e.getEmployeeId());
         e.setName(name);
@@ -36,9 +36,7 @@ public class EmployeeDirectory {
         return e;
     }
 
-    public Library getLib() {
-        return library;
-    }
+    
     
     
 }

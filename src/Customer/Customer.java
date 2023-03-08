@@ -10,73 +10,83 @@ import Personnel.Person;
 import Library.RentalRequest.RentalRequest;
 import Library.Material.Book;
 import Library.Material.Magazine;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author forumkaria
  */
-public
-        class Customer extends Person{
-   private ArrayList<RentalRequest> customerRentalRequests;
-   private RentalRequest curRentalRequest;
-   
-   public Customer() {
+public class Customer extends Person {
+
+    private ArrayList<RentalRequest> customerRentalRequests;
+    private RentalRequest curRentalRequest;
+
+    public Customer() {
         super();
         this.customerRentalRequests = new ArrayList<RentalRequest>();
     }
 
-    public
-    RentalRequest getCurRentalRequest() {
+    public RentalRequest getCurRentalRequest() {
         return curRentalRequest;
     }
 
-    public
-    void setCurRentalRequest(RentalRequest curRentalRequest) {
+    public void setCurRentalRequest(RentalRequest curRentalRequest) {
         this.curRentalRequest = curRentalRequest;
     }
 
-    public
-    String getPersonid() {
+    public String getPersonid() {
         return personid;
     }
 
-    public
-    void setPersonid(String personid) {
+    public void setPersonid(String personid) {
         this.personid = personid;
     }
 
-    public
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    public
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-   
-   
-    public
-    ArrayList<RentalRequest> getCustomerRentalRequests() {
+
+    public ArrayList<RentalRequest> getCustomerRentalRequests() {
         return customerRentalRequests;
     }
 
-    public RentalRequest addRequest(int duration, Book book, Magazine magazine, Library library, Customer customer){
-        RentalRequest rentalReq = new RentalRequest(duration, book, magazine, library, customer);
-        this.customerRentalRequests.add(rentalReq);
-        
-        return rentalReq;
-        
+    public RentalRequest addRequest(RentalRequest rr) {
+        this.curRentalRequest = rr;
+        this.customerRentalRequests.add(rr);
+
+        return rr;
+
     }
-   
-    public RentalRequest findRequest(String id){
-        for (RentalRequest rentalReq: this.customerRentalRequests){
-            if (rentalReq.getId().equals(id)){
+
+    public void returnRequest(String id) {
+        this.curRentalRequest.setStatus("Returned");
+
+    }
+
+    public RentalRequest findRequest(String id) {
+        for (RentalRequest rentalReq : this.customerRentalRequests) {
+            if (rentalReq.getId().equals(id)) {
                 return rentalReq;
             }
         }
         return null;
     }
-   
-           
+    
+//    public boolean checkRentalRequest(String rentalRequest, String customerID) {
+
+//    boolean requestAlreadyExists = false;
+
+//
+//    if (requestAlreadyExists) {
+//        JOptionPane.showMessageDialog(null, "This rental request has already been added to your history.");
+//        return false;
+//    } else {
+//        return true;
+//    }
+//}
+
 }

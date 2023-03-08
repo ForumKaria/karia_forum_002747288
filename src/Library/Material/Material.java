@@ -16,6 +16,27 @@ public class Material {
     String name;
     Date date;
     Boolean isAvailable = true;
+    String materialType;
+
+    public static
+    int getCount() {
+        return count;
+    }
+
+    public static
+    void setCount(int count) {
+        Material.count = count;
+    }
+
+    public
+    String getMaterialType() {
+        return materialType;
+    }
+
+    public
+    void setMaterialType(String materialType) {
+        this.materialType = materialType;
+    }
     
     public Material(){
         this.materialId = "MaterialID_" + count++; 
